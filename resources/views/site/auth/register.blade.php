@@ -46,7 +46,7 @@
                                 <div class="col-md-12 mb-4">
                                     <div class="form-outline">
                                         <label class="form-label" for="userName">Tên đăng nhập</label>
-                                        <input type="text" id="userName" name="user_name" class="form-control" />
+                                        <input type="text" id="userName" name="user_name" class="form-control" value="{{ $old('user_name') ?? ''}}" />
                                         @error('user_name')
                                         <p class="text-danger"><i>{{ $message }}</i></p>
                                         @enderror
@@ -75,7 +75,7 @@
                                 <div class="col-md-12 mb-4">
                                     <div class="form-outline">
                                         <label class="form-label" for="name">Họ tên(Lưu ý: nhập đúng với tên tài khoản ngân hàng)</label>
-                                        <input type="text" id="name" name="name" class="form-control" />
+                                        <input type="text" id="name" name="name" class="form-control"  value="{{ $old('name') ?? '' }}"/>
                                         @error('name')
                                         <p class="text-danger"><i>{{ $message }}</i></p>
                                         @enderror
@@ -85,7 +85,7 @@
                                 <div class="col-md-12 mb-4">
                                     <div class="form-outline">
                                         <label class="form-label" for="phone">Số điện thoại</label>
-                                        <input type="text" id="phone" name="phone" class="form-control" />
+                                        <input type="text" id="phone" name="phone" class="form-control" value="{{ $old('phone') ?? '' }}" />
                                         @error('phone')
                                         <p class="text-danger"><i>{{ $message }}</i></p>
                                         @enderror
@@ -95,9 +95,9 @@
                                     <div class="form-outline">
                                         <label class="form-label" for="name">Mức quy đổi </label>
                                         <select class="select form-control" name="rate">
-                                            <option value="1">1đ = 25.000đ</option>
-                                            <option value="2">1đ = 50.000đ</option>
-                                            <option value="3">1đ = 100.000đ</option>
+                                            <option value="1" @if ($old('rate') && $old('rate') == 1 )selected @endif>1đ = 25.000đ</option>
+                                            <option value="2" @if ($old('rate') && $old('rate') == 2 )selected @endif>1đ = 50.000đ</option>
+                                            <option value="3" @if ($old('rate') && $old('rate') == 3 )selected @endif>1đ = 100.000đ</option>
                                         </select>
                                         @error('rate')
                                         <p class="text-danger"><i>{{ $message }}</i></p>

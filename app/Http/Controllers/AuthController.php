@@ -48,7 +48,10 @@ class AuthController extends Controller
         ];
 
         $id = $userModel->insertGetId($data);
-        dd($id);
+
+        return view('site.auth.verify_code')->with([
+            'userId' => $id
+        ]);
     }
 
     public function logOut()
