@@ -3,24 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Đăng ký</title>
     <link href="{{ asset('assset/css/bootstrap.min.css') }}" rel="stylesheet" id="bootstrap-css">
-    <link href="{{ asset('assset/css/login.css') }}" rel="stylesheet">
     <script src="{{ asset('assset/js/jquery-1.11.1.min.js') }}"></script>
     <script src="{{ asset('assset/js/bootstrap.min.js') }}"></script>
 
     <style>
-        .gradient-custom {
-            /* fallback for old browsers */
-            background: #f093fb;
-
-            /* Chrome 10-25, Safari 5.1-6 */
-            background: -webkit-linear-gradient(to bottom right, rgba(240, 147, 251, 1), rgba(245, 87, 108, 1));
-
-            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-            background: linear-gradient(to bottom right, rgba(240, 147, 251, 1), rgba(245, 87, 108, 1))
-        }
-
         .card-registration .select-input.form-control[readonly]:not([disabled]) {
             font-size: 1rem;
             line-height: 2.15;
@@ -46,7 +34,7 @@
                                 <div class="col-md-12 mb-4">
                                     <div class="form-outline">
                                         <label class="form-label" for="userName">Tên đăng nhập</label>
-                                        <input type="text" id="userName" name="user_name" class="form-control" value="{{ $old('user_name') ?? ''}}" />
+                                        <input type="text" id="userName" name="user_name" class="form-control" value="{{ old('user_name') ?? ''}}" />
                                         @error('user_name')
                                         <p class="text-danger"><i>{{ $message }}</i></p>
                                         @enderror
@@ -75,7 +63,7 @@
                                 <div class="col-md-12 mb-4">
                                     <div class="form-outline">
                                         <label class="form-label" for="name">Họ tên(Lưu ý: nhập đúng với tên tài khoản ngân hàng)</label>
-                                        <input type="text" id="name" name="name" class="form-control"  value="{{ $old('name') ?? '' }}"/>
+                                        <input type="text" id="name" name="name" class="form-control"  value="{{ old('name') ?? '' }}"/>
                                         @error('name')
                                         <p class="text-danger"><i>{{ $message }}</i></p>
                                         @enderror
@@ -85,7 +73,7 @@
                                 <div class="col-md-12 mb-4">
                                     <div class="form-outline">
                                         <label class="form-label" for="phone">Số điện thoại</label>
-                                        <input type="text" id="phone" name="phone" class="form-control" value="{{ $old('phone') ?? '' }}" />
+                                        <input type="text" id="phone" name="phone" class="form-control" value="{{ old('phone') ?? '' }}" />
                                         @error('phone')
                                         <p class="text-danger"><i>{{ $message }}</i></p>
                                         @enderror
@@ -95,17 +83,17 @@
                                     <div class="form-outline">
                                         <label class="form-label" for="name">Mức quy đổi </label>
                                         <select class="select form-control" name="rate">
-                                            <option value="1" @if ($old('rate') && $old('rate') == 1 )selected @endif>1đ = 25.000đ</option>
-                                            <option value="2" @if ($old('rate') && $old('rate') == 2 )selected @endif>1đ = 50.000đ</option>
-                                            <option value="3" @if ($old('rate') && $old('rate') == 3 )selected @endif>1đ = 100.000đ</option>
+                                            <option value="1" @if (old('rate') && old('rate') == 1 )selected @endif>1đ = 25.000đ</option>
+                                            <option value="2" @if (old('rate') && old('rate') == 2 )selected @endif>1đ = 50.000đ</option>
+                                            <option value="3" @if (old('rate') && old('rate') == 3 )selected @endif>1đ = 100.000đ</option>
                                         </select>
                                         @error('rate')
                                         <p class="text-danger"><i>{{ $message }}</i></p>
                                         @enderror
                                     </div>
                                 </div>
-                            <div class="mt-4 pt-2">
-                                <input class="btn btn-primary btn-lg" type="submit" value="Submit" />
+                            <div class="col-md-12">
+                                <input class="btn btn-primary" type="submit" value="Đăng ký" />
                             </div>
                         </div>
                         </form>

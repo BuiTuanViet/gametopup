@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Crypt;
 
 class User extends Authenticatable
 {
@@ -31,4 +32,8 @@ class User extends Authenticatable
      */
     protected $casts = [];
 
+    public function getAuthPassword()
+    {
+        return Crypt::decrypt($this->attributes['password']);
+    }
 }

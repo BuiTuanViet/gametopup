@@ -3,64 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="assset/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <link href="assset/css/login.css" rel="stylesheet">
-    <script src="assset/js/jquery-1.11.1.min.js"></script>
-    <script src="assset/js/bootstrap.min.js"></script>
+    <title>Đăng nhập</title>
+    <link href="{{ asset('assset/css/bootstrap.min.css') }}" rel="stylesheet" id="bootstrap-css">
+    <script src="{{ asset('assset/js/jquery-1.11.1.min.js') }}"></script>
+    <script src="{{ asset('assset/js/bootstrap.min.js') }}"></script>
 
+    <style>
+        .card-registration .select-input.form-control[readonly]:not([disabled]) {
+            font-size: 1rem;
+            line-height: 2.15;
+            padding-left: .75em;
+            padding-right: .75em;
+        }
+        .card-registration .select-arrow {
+            top: 13px;
+        }
+    </style>
 </head>
 <body>
-<section class="login-block">
-    <div class="container">
-	<div class="row">
-		<div class="col-md-4 login-sec">
-		    <h2 class="text-center">Login Now</h2>
-		    <form action="{{ route('login') }}" class="login-form" method="POST">
-            @csrf
-                <div class="form-group">
-                    <label for="exampleInputEmail1" class="text-uppercase">Username</label>
-                    <input name="email" type="text" class="form-control" placeholder="Email">
-                    
+<section class="vh-100 gradient-custom">
+    <div class="container py-5 h-100">
+        <div class="row justify-content-center align-items-center h-100">
+            <div class="col-12 col-lg-9 col-xl-7">
+                <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+                    <div class="card-body p-4 p-md-5">
+                        <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Đăng nhập </h3>
+                        <form method="post" action="{{ route('post_login') }}">
+                            @csrf
+                            <div class="row">
+                                <div class="col-md-12 mb-4">
+                                    <div class="form-outline">
+                                        <label class="form-label" for="userName">Tên đăng nhập</label>
+                                        <input type="text" id="userName" name="user_name" class="form-control" value="{{ old('user_name') ?? ''}}" />
+                                        @error('user_name')
+                                        <p class="text-danger"><i>{{ $message }}</i></p>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-md-12 mb-4">
+                                    <div class="form-outline">
+                                        <label class="form-label" for="password">Mật khẩu</label>
+                                        <input type="password" id="password" name="password" class="form-control" />
+                                        @error('password')
+                                        <p class="text-danger"><i>{{ $message }}</i></p>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <input class="btn btn-primary" type="submit" value="Đăng nhập" />
+                                    <label for="">Chưa có tài khoản? <a href="{{ route('register') }}">Đăng ký tại đây</a></label>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="exampleInputPassword1" class="text-uppercase">Password</label>
-                    <input name="password" type="password" class="form-control" placeholder="Password">
-                </div>
-                    <div class="form-check">
-                    <button type="submit" class="btn btn-login float-right">Submit</button>
-                </div>
-            </form>
+            </div>
         </div>
-            <div class="col-md-8 banner-sec">
-            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                <ol class="carousel-indicators">
-                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                </ol>
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                    <img class="d-block w-100" src="assset/img/people-coffee-tea-meeting.jpg" alt="First slide">
-                    </div>
-                    <div class="carousel-item">
-                    <img class="d-block w-100" src="assset/img/pexels-photo.jpg" alt="Second slide">
-                    </div>
-                </div>
-                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
-                </div>
-            </div>	   
-		</div>
-	</div>
-</div>
+    </div>
 </section>
-    
 </body>
 </html>

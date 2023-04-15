@@ -1,93 +1,54 @@
- <!-- Main Sidebar Container -->
- <aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
-      <img src="https://www.pngfind.com/pngs/m/470-4703547_icon-user-icon-hd-png-download.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
-           style="opacity: .8">
-      <span class="brand-text font-weight-light">
-          {{ Auth::user()->name }}
-      </span>
-    </a>
-
-    <!-- Sidebar -->
-    <div class="sidebar">
-      <!-- Sidebar Menu -->
-      <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-
-        <li class="nav-item">
-            <a href="#" class="nav-link {{ Request::is('top') ? 'active' : '' }} ">
-              <i class="nav-icon fas fa-home"></i>
-              <p>
-              Home
-                <i class="right fas fa-angle-left"></i>
-              </p>
+<div class="sidebar" data-image="../assets/img/sidebar-5.jpg">
+    <div class="sidebar-wrapper">
+        <div class="logo">
+            <a href="#" class="simple-text">
+                Quản lý chung
             </a>
-          </li>
+        </div>
+        <ul class="nav">
+            <li class="nav-item {{  url()->current() == route('users') ? 'active' : ''}}">
+                <a class="nav-link" href="{{ route('dashboard') }}">
+                    <i class="nc-icon nc-circle-09"></i>
+                    <p>User Profile</p>
+                </a>
+            </li>
+            <li class="nav-item {{  url()->current() == route('transactions') ? 'active' : ''}}">
+                <a class="nav-link" href="{{ route('transactions') }}">
+                    <i class="nc-icon nc-paper-2"></i>
+                    <p>Lịch sử nạp rút</p>
+                </a>
+            </li>
+            <li class="nav-item {{  url()->current() == route('topup') ? 'active' : ''}}">
+                <a class="nav-link" href="{{ route('topup') }}">
+                    <i class="nc-icon nc-cloud-upload-94"></i>
+                    <p>Nạp tiền</p>
+                </a>
+            </li>
+            <li class="nav-item {{  url()->current() == route('withdraw') ? 'active' : ''}}">
+                <a class="nav-link" href="{{ route('withdraw') }}">
+                    <i class="nc-icon nc-cloud-download-93"></i>
+                    <p>Rút tiền</p>
+                </a>
+            </li>
+            <li class="nav-item {{  url()->current() == route('promotion') ? 'active' : ''}}">
+                <a class="nav-link" href="{{ route('promotion') }}">
+                    <i class="nc-icon nc-notes"></i>
+                    <p>Khuyến mãi</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="">
+                    <i class="nc-icon nc-controller-modern"></i>
+                    <p>Vào đá gà SV388</p>
+                </a>
+            </li>
 
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link {{ Request::is('user') ? 'active' : '' }} ">
-              <i class="nav-icon fas fa-users"></i>
-              <p>
-              Quản lý người dùng
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{ route('user.create') }}" class="nav-link">
-                  <i class="fa fa-circle nav-icon"></i>
-                  <p>Thêm người dùng
-                  </p>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('logout') }}">
+                    <i class="nc-icon nc-tap-01"></i>
+                    <p>Logout</p>
                 </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{ route('user.index') }}" class="nav-link">
-                  <i class="fa fa-circle nav-icon"></i>
-                  <p>Danh sách nguời dùng</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link {{ Request::is('top') ? '' : '' }} ">
-              <i class="nav-icon fas fa-clock"></i>
-              <p>
-              Quản lý chấm công
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="./index.html" class="nav-link">
-                  <i class="fa fa-circle nav-icon"></i>
-                  <p>
-                  Tổng thể
-                  </p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="./index2.html" class="nav-link">
-                  <i class="fa fa-circle nav-icon"></i>
-                  <p>Chi tiết thành viên</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-
-          <li class="nav-item has-treeview">
-            <a href="{{ route('setting.index') }}" class="nav-link {{ Request::is('setting') ? 'active' : '' }} ">
-              <i class="nav-icon fas fa-user-cog"></i>
-              <p>
-              Cài đặt
-                <!-- <i class="right fas fa-angle-left"></i> -->
-              </p>
-            </a>
-          </li>
+            </li>
         </ul>
-      </nav>
-      <!-- /.sidebar-menu -->
     </div>
-    <!-- /.sidebar -->
-  </aside>
+</div>

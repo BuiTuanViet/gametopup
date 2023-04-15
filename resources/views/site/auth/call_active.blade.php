@@ -91,9 +91,7 @@
     </style>
     <script>
         const codes = document.querySelectorAll('.code');
-
         codes[0].focus();
-
         codes.forEach((code, idx) => {
             code.addEventListener('keydown', (e) => {
                 if (e.key >= 0 && e.key <= 9) {
@@ -109,65 +107,33 @@
 <body>
 <section class="vh-100 gradient-custom">
     <div class="container">
-        <h2>Verify Your Account</h2>
-        <p>
-            We emailed you the six digit code to cool_guy@email.com <br />
-            Enter the code below to confirm your email address.
-        </p>
-        <div class="code-container">
-            <input
-                type="number"
-                class="code"
-                placeholder="0"
-                min="0"
-                max="9"
-                required
-            />
-            <input
-                type="number"
-                class="code"
-                placeholder="0"
-                min="0"
-                max="9"
-                required
-            />
-            <input
-                type="number"
-                class="code"
-                placeholder="0"
-                min="0"
-                max="9"
-                required
-            />
-            <input
-                type="number"
-                class="code"
-                placeholder="0"
-                min="0"
-                max="9"
-                required
-            />
-            <input
-                type="number"
-                class="code"
-                placeholder="0"
-                min="0"
-                max="9"
-                required
-            />
-            <input
-                type="number"
-                class="code"
-                placeholder="0"
-                min="0"
-                max="9"
-                required
-            />
-        </div>
-        <small class="info">
-            This is design only. We didn't actually send you an email as we don't
-            have your email, right?
-        </small>
+        <h2>Liên hệ với chúng tôi để được kích hoạt tài khoản.</h2>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">STT</th>
+                <th scope="col">Kênh</th>
+                <th scope="col">Liên hệ</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>Số điện thoại</td>
+                <td>021241545</td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>Telegram</td>
+                <td><a href="#">link</a></td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td>Chat ngay cho chúng tôi</td>
+                <td><a href="#">link</a></td>
+            </tr>
+            </tbody>
+        </table>
     </div>
 </section>
 </body>

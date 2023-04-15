@@ -1,102 +1,44 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 3 | Dashboard</title>
-  <!-- Tell the browser to be responsive to screen width -->
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="{{ asset('fontawesome-free-5-web/css/all.css') }}">
-  <!-- Ionicons -->
-  <link rel="stylesheet" href="{{ asset('admin-lte/ionicons.min.css') }}">
-  <!-- Tempusdominus Bbootstrap 4 -->
-  <link rel="stylesheet" href="{{ asset('admin-lte/tempusdominus-bootstrap-4.min.css') }}">
-  <!-- iCheck -->
-  <link rel="stylesheet" href="{{ asset('admin-lte/icheck-bootstrap.min.css') }}">
-  <!-- JQVMap -->
-  <link rel="stylesheet" href="{{ asset('admin-lte/jqvmap.min.css') }}">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="{{ asset('admin-lte/adminlte.min.css') }}">
-  <!-- overlayScrollbars -->
-  <link rel="stylesheet" href="{{ asset('admin-lte/OverlayScrollbars.min.css') }}">
-  <!-- Daterange picker -->
-  <link rel="stylesheet" href="{{ asset('admin-lte/daterangepicker.css') }}">
-  <!-- summernote -->
-  <link rel="stylesheet" href="{{ asset('admin-lte/summernote-bs4.css') }}">
-    <!-- calenda -->
-
-    <link rel="stylesheet" href="{{ asset('admin-lte/main.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('admin-lte/main1.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('admin-lte/main2.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('admin-lte/main3.min.css') }}">
-  <!-- Google Font: Source Sans Pro -->
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <meta charset="utf-8" />
+    <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
+    <link rel="icon" type="image/png" href="../assets/img/favicon.ico">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Dashboard</title>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+    <!--     Fonts and icons     -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+    <!-- CSS Files -->
+    <link href="{{ asset('dashboard/light-bootstrap-dashboard/assets/css/bootstrap.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('dashboard/light-bootstrap-dashboard/assets/css/light-bootstrap-dashboard.css') }}" rel="stylesheet" />
+    <!-- CSS Just for demo purpose, don't include it in your project -->
+    <link href="{{ asset('dashboard/light-bootstrap-dashboard/assets/css/demo.css') }}" rel="stylesheet" />
 </head>
-<body class="hold-transition sidebar-mini layout-fixed" onload="startTime()">
+
+<body>
 <div class="wrapper">
-  @include('site.master.header')
-{{--  @include('admin.master.siderbar')--}}
-    <section class="content">
+    @include('site.master.siderbar')
     @yield('content')
-    </section>
 </div>
-@include('admin.master.form-delete')
-<!-- ./wrapper -->
 
-<!-- jQuery -->
-<script src=" {{ asset('admin-lte/jquery.min.js') }} "></script>
-<!-- jQuery UI 1.11.4 -->
-<script src=" {{ asset('/admin-lte/jquery-ui.min.js') }} "></script>
-<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-<script>
-  $.widget.bridge('uibutton', $.ui.button)
-</script>
-<script src=" {{ asset('fontawesome-free-5-web/js/all.js') }} "></script>
-
-<!-- Bootstrap 4 -->
-<script src=" {{ asset('admin-lte/bootstrap.bundle.min.js') }} "></script>
-<!-- ChartJS -->
-<script src=" {{ asset('admin-lte/Chart.min.js') }} "></script>
-<!-- Sparkline -->
-<script src=" {{ asset('admin-lte/sparkline.js') }} "></script>
-<!-- JQVMap -->
-<!-- <script src=" {{ asset('admin-lte/jquery.vmap.min.js') }} "></script>
-<script src=" {{ asset('admin-lte/jquery.vmap.usa.js') }} "></script> -->
-<!-- jQuery Knob Chart -->
-<script src=" {{ asset('admin-lte/jquery.knob.min.js') }} "></script>
-<!-- daterangepicker -->
-<script src=" {{ asset('admin-lte/moment.min.js') }} "></script>
-<script src=" {{ asset('admin-lte/daterangepicker.js') }} "></script>
-<!-- Tempusdominus Bootstrap 4 -->
-<script src=" {{ asset('admin-lte/tempusdominus-bootstrap-4.min.js') }} "></script>
-<!-- Summernote -->
-<script src=" {{ asset('admin-lte/summernote-bs4.min.js') }} "></script>
-<!-- overlayScrollbars -->
-<script src=" {{ asset('admin-lte/jquery.overlayScrollbars.min.js') }} "></script>
-<!-- AdminLTE App -->
-<script src=" {{ asset('admin-lte/adminlte.js') }} "></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src=" {{ asset('admin-lte/dashboard.js') }} "></script>
-<!-- AdminLTE for demo purposes -->
-<script src=" {{ asset('admin-lte/demo.js') }} "></script>
-<!-- fullCalendar 2.2.5 -->
-<script src="{{ asset('admin-lte/main.min.js') }}"></script>
-<script src="{{ asset('admin-lte/main1.min.js') }}"></script>
-<script src="{{ asset('admin-lte/main2.min.js') }}"></script>
-<script src="{{ asset('admin-lte/main3.min.js') }}"></script>
-<script src="{{ asset('admin-lte/main4.min.js') }}"></script>
-
-@yield('js')
-
-<script>
-    function deleteItem(e) {
-        let url = $(e).attr('url');
-        $('#form-delete').attr('action', url);
-
-        if(confirm('Bạn có thật sự muốn xóa!')){
-            $('#form-delete').submit();
-        }
-    }
-</script>
 </body>
+<!--   Core JS Files   -->
+<script src="{{ asset('dashboard/light-bootstrap-dashboard/assets/js/core/jquery.3.2.1.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('dashboard/light-bootstrap-dashboard/assets/js/core/popper.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('dashboard/light-bootstrap-dashboard/assets/js/core/bootstrap.min.js') }}" type="text/javascript"></script>
+<!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
+<script src="{{ asset('dashboard/light-bootstrap-dashboard/assets/js/plugins/bootstrap-switch.js') }}"></script>
+<!--  Google Maps Plugin    -->
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+<!--  Chartist Plugin  -->
+<script src="{{ asset('dashboard/light-bootstrap-dashboard/assets/js/plugins/chartist.min.js') }}"></script>
+<!--  Notifications Plugin    -->
+<script src="{{ asset('dashboard/light-bootstrap-dashboard/assets/js/plugins/bootstrap-notify.js') }}"></script>
+<!-- Control Center for Light Bootstrap Dashboard: scripts for the example pages etc -->
+<script src="{{ asset('dashboard/light-bootstrap-dashboard/assets/js/light-bootstrap-dashboard.js?v=2.0.0') }} " type="text/javascript"></script>
+<!-- Light Bootstrap Dashboard DEMO methods, don't include it in your project! -->
+<script src="{{ asset('dashboard/light-bootstrap-dashboard/assets/js/demo.js') }}"></script>
+
 </html>

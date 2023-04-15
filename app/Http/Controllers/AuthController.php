@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LoginRequest;
 use App\Http\Requests\UpdatePassword;
 use App\Http\Requests\UserRequest;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
@@ -15,20 +17,25 @@ class AuthController extends Controller
     public function __construct()
     {
     }
-
-    public function login(Request $request)
-    {
-        $data = [
-            'user_name' => $request['user_name'],
-            'password' => $request['password'],
-        ];
-
-        if (Auth::attempt($data)) {
-            dd(1);
-            return redirect(route('top'));
-        }else{
-            dd('login k thành công');
+    public function getLogin(){
+        if (!Auth::user()){
+            return view('site.auth.login');
         }
+        return redirect(route('dashboard'));
+    }
+
+    public function postLogin(LoginRequest $request)
+    {
+        $user = User::where('user_name', $request->input('user_name'))->first();
+
+        if ($user && Crypt::decrypt($user->password) === $request->input('password')) {
+            Auth::login($user);
+            return redirect(route('dashboard'));
+        } else {
+            return redirect()->back()->withErrors(['login' => 'Thông tin đăng nhập không chính xác']);
+        }
+
+        // Xác thực thất bại, quay trở lại trang đăng nhập với thông báo lỗi
     }
 
     public function getRegister(Request $request)
@@ -41,7 +48,7 @@ class AuthController extends Controller
         $userModel = new User();
         $data = [
             'user_name' => $request->user_name,
-            'password' => Hash::make($request->password),
+            'password' => Crypt::encrypt($request->password),
             'name' => $request->name,
             'phone' => $request->phone,
             'rate' => $request->rate,
@@ -49,9 +56,11 @@ class AuthController extends Controller
 
         $id = $userModel->insertGetId($data);
 
-        return view('site.auth.verify_code')->with([
-            'userId' => $id
-        ]);
+        return redirect(route('call_active'));
+    }
+
+    public function callActive(){
+        return view('site.auth.call_active');
     }
 
     public function logOut()
