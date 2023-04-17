@@ -10,8 +10,13 @@
             <form action="{{ route('bank-user.index') }}" method="get">
                 <div class="row">
                     <div class="form-group col-md-3">
-                        <label for="user_name">Tên đăng nhập</label>
-                        <input type="text" id="user_name" class="form-control" name="user_name" value="{{ request('user_name') }}">
+                        <label for="type">Tài khoản</label>
+                        <select class="select form-control" name="user_id">
+                            <option value="">-- Tất cả --</option>
+                            @foreach($users as $user)
+                            <option value="{{ $user->id }}" {{ request('user_id') == $user->id ? "selected" : ''}}>{{ $user->user_name }} ({{ $user->name }})</option>
+                            @endforeach
+                        </select>
                     </div>
 
                     <div class="form-group col-md-12">
@@ -32,84 +37,37 @@
                 <tr>
                     <th style="width: 10px">ID</th>
                     <th>User Name</th>
-                    <th>Mật khẩu</th>
-                    <th>Tên</th>
-                    <th>Số điện thoại</th>
-                    <th>Mức quy đổi</th>
-                    <th>Phân loại</th>
-                    <th>Trạng thái</th>
+                    <th>Ngân hàng</th>
+                    <th>Tên tài khoản</th>
+                    <th>Số tài khoản</th>
                     <th style="width: 150px">Thao tác</th>
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($users as $index => $user)
+                @foreach($bankUsers as $index => $item)
                 <tr>
                     <td>{{ $index + 1 }}</td>
-                    <td>{{ $user->user_name }}</td>
-                    <td>{{ \Illuminate\Support\Facades\Crypt::decrypt($user->password) }}</td>
-                    <td>{{ $user->name }}</td>
+                    <td>{{ $item->user->user_name }}</td>
+                    <td>{{ $item->bank->bank_short_name }}</td>
                     <td>
-                        {{ $user->phone }}
+                        {{ $item->acc_name }}
                     </td>
                     <td>
-                        @switch($user->rate)
-                            @case(1)
-                            1đ = 25.000đ
-                            @break
-                            @case(2)
-                            1đ = 50.000đ
-                            @break
-                            @case(3)
-                            1đ = 100.000đ
-                            @break
-                        @endswitch
-                    </td>
-                    <td>
-                        @switch($user->role)
-                            @case(0)
-                            Người dùng
-                            @break
-                            @case(1)
-                            Admin
-                            @break
-                        @endswitch
-                    </td>
-                    <td>
-                        @switch($user->status)
-                            @case(0)
-                            <span class="badge badge-warning">Chưa kích hoạt</span>
-                            @break
-                            @case(1)
-                            <span class="badge badge-primary">Đã kích hoạt</span>
-                            @break
-                        @endswitch
+                        {{ $item->acc_no }}
                     </td>
                     <td style="width: 150px">
-                        <a href="{{ route('user.edit', ['user' => $user->id]) }}" title="Chỉnh sửa">
+                        <a href="{{ route('bank-user.edit', ['bank_user' => $item->id]) }}" title="Chỉnh sửa">
                             <button class="btn btn-primary">
                                 <i class="fa fa-pencil-alt"></i>
                             </button>
                         </a>
-                        <a onclick="deleteItem(this);" url="{{ route('user.destroy', ['user' => $user->id]) }}" title="Xóa"><button class="btn btn-danger"><i class="fa fa-trash-alt"></i></button></a>
-                        @if($user->status == 0)
-                        <a onclick="acceptItem(this);" url="{{ route('accept_user', ['id' => $user->id]) }}" title="Kích hoạt">
-                            <button class="btn btn-success">
-                                <i class="fa fa-angle-up"></i>
-                            </button>
-                        </a>
-                        @else
-                            <a onclick="acceptItem(this);" url="{{ route('accept_user', ['id' => $user->id]) }}" title="Hủy Kích hoạt">
-                                <button class="btn btn-success">
-                                    <i class="fa fa-angle-down"></i>
-                                </button>
-                            </a>
-                        @endif
+                        <a onclick="deleteItem(this);" url="{{ route('bank-user.destroy', ['bank_user' => $item->id]) }}" title="Xóa"><button class="btn btn-danger"><i class="fa fa-trash-alt"></i></button></a>
                     </td>
                 </tr>
                 @endforeach
                 </tbody>
             </table>
         </div>
-        {{ $users->links() }}
+        {{ $bankUsers->links() }}
     </div>
 @endsection

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Bank;
 use App\Models\BankUser;
 use App\Models\Information;
+use App\User;
 use Illuminate\Http\Request;
 
 class BankUserController extends Controller
@@ -17,12 +18,16 @@ class BankUserController extends Controller
      */
     public function index(Request $request)
     {
-        $bankUsers = BankUser::with('user')->paginate(10);
+        $bankUsers = BankUser::with('user', 'bank');
         if ($request->user_id){
-
+            $bankUsers = $bankUsers->where('user_id', $request->user_id);
         }
+        $bankUsers = $bankUsers->paginate(10);
+        $users = User::all();
+
         return view('admin.bank_user.list')->with([
-            'bankUsers' => $bankUsers
+            'bankUsers' => $bankUsers,
+            'users' => $users
         ]);
     }
 
@@ -33,7 +38,13 @@ class BankUserController extends Controller
      */
     public function create()
     {
-        //
+        $users = User::all();
+        $banks = Bank::all();
+
+        return view('admin.bank_user.add')->with([
+            'users' => $users,
+            'banks' => $banks
+        ]);
     }
 
     /**

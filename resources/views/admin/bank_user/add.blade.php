@@ -3,7 +3,7 @@
 @section('content')
     <div class="card card-warning">
         <div class="card-header">
-            <h3 class="card-title">Thêm mới người dùng</h3>
+            <h3 class="card-title">Thêm mới số tài khoản cho người dùng</h3>
         </div>
         <div class="card-body">
             @if ($errors->any())
@@ -15,18 +15,32 @@
                     </ul>
                 </div>
             @endif
-                <form method="post" action="{{ route('user.store') }}">
+                <form method="post" action="{{ route('bank-user.store') }}">
                     @csrf
                         <div class="col-md-6 mb-4">
                             <div class="form-outline">
-                                <label class="form-label" for="userName">Tên đăng nhập</label>
-                                <input type="text" id="userName" name="user_name" class="form-control" value="{{ old('user_name') }}">
+                                <label class="form-label" for="userName">Tên tài khoản</label>
+                                <select name="user_id" class="form-control"  id="userName">
+                                    <option value="">Vui lòng chọn</option>
+                                    @foreach($users as $user)
+                                    <option value="{{ $user->id }}" {{ old('user_id') == $user->id ? 'selected' : '' }}>
+                                        {{ $user->user_name }} ({{ $user->name }})
+                                    </option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
                         <div class="col-md-6 mb-4">
                             <div class="form-outline">
-                                <label class="form-label" for="password">Mật khẩu</label>
-                                <input type="password" id="password" name="password" class="form-control" value="{{ old('password') }}">
+                                <label class="form-label" for="bank_no">Ngân hàng</label>
+                                <select name="bank_no" class="form-control"  id="bank_no">
+                                    <option value="">Vui lòng chọn</option>
+                                    @foreach($banks as $bank)
+                                        <option value="{{ $bank->bank_no }}" {{ old('bank_no') == $bank->bank_no ? 'selected' : '' }}>
+                                            {{ $bank->bank_short_name }}
+                                        </option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
 
