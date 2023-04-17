@@ -9,7 +9,12 @@ class Transaction extends Model
 {
     public $table = 'transactions';
     protected $primaryKey = "trans_id";
+
     public function user(){
         return $this->hasOne(User::class, 'id', 'user_id');
+    }
+
+    public function bank(){
+        return $this->hasOne(Bank::class, 'bank_no', 'bank_no');
     }
 }

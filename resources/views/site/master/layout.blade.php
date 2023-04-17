@@ -15,6 +15,23 @@
     <link href="{{ asset('dashboard/light-bootstrap-dashboard/assets/css/light-bootstrap-dashboard.css') }}" rel="stylesheet" />
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="{{ asset('dashboard/light-bootstrap-dashboard/assets/css/demo.css') }}" rel="stylesheet" />
+    <style>
+        body{
+            background: url("{{ asset('assset/img/background.jpg') }}");
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        footer {
+            display: none;
+        }
+        .card label {
+            color: #000;
+        }
+        ::placeholder {
+            color: #f87474 !important;
+            opacity: 1; /* Firefox */
+        }
+    </style>
 </head>
 
 <body>

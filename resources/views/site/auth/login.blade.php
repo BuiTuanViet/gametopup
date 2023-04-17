@@ -15,13 +15,23 @@
             padding-left: .75em;
             padding-right: .75em;
         }
+
         .card-registration .select-arrow {
             top: 13px;
+        }
+        body{
+            background: url("{{ asset('assset/img/background.jpg') }}");
+            background-size: cover;
+            background-repeat: no-repeat;
+            color: #fff
+        }
+        .card{
+            background-color: #ffffff42;
         }
     </style>
 </head>
 <body>
-<section class="vh-100 gradient-custom">
+<section class="gradient-custom">
     <div class="container py-5 h-100">
         <div class="row justify-content-center align-items-center h-100">
             <div class="col-12 col-lg-9 col-xl-7">
@@ -37,7 +47,7 @@
                                 <div class="col-md-12 mb-4">
                                     <div class="form-outline">
                                         <label class="form-label" for="userName">Tên đăng nhập</label>
-                                        <input type="text" id="userName" name="user_name" class="form-control" value="{{ old('user_name') ?? ''}}" />
+                                        <input type="text" id="userName" name="user_name" class="form-control" value="{{ old('user_name') ?? ''}}" placeholder="Tên đăng nhập"/>
                                         @error('user_name')
                                         <p class="text-danger"><i>{{ $message }}</i></p>
                                         @enderror
@@ -46,7 +56,7 @@
                                 <div class="col-md-12 mb-4">
                                     <div class="form-outline">
                                         <label class="form-label" for="password">Mật khẩu</label>
-                                        <input type="password" id="password" name="password" class="form-control" />
+                                        <input type="password" id="password" name="password" class="form-control"  placeholder="Mật khẩu"/>
                                         @error('password')
                                         <p class="text-danger"><i>{{ $message }}</i></p>
                                         @enderror

@@ -13,6 +13,9 @@ class HomeController extends Controller
     }
 
     public function dashboard(){
-        return redirect(route('users'));
+        $user = Auth::user();
+        return view ('site.dashboard')->with([
+            'user' => $user
+        ]);
     }
 }

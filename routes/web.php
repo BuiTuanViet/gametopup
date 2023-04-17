@@ -51,6 +51,7 @@ Route::group(['namespace' => 'Site', 'middleware' => 'guest'] , function () {
     Route::post('post-withdraw', 'TransactionController@postWithdraw')->name('post_withdraw');
     Route::get('show-bank-account/{trans_id}', 'TransactionController@showBankAccount')->name('show_bank_account');
     Route::get('promotion', 'PromotionController@showPromotionActive')->name('promotion');
+    Route::get('bank-user', 'BankUserController@showBankUser')->name('bank_user');
 });
 
 

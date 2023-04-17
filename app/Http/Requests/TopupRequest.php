@@ -25,7 +25,6 @@ class TopupRequest extends FormRequest
     {
         return [
             'acc_no' => 'required',
-            'bank_no' => 'required',
             'amount' => 'required|numeric',
         ];
     }
@@ -34,7 +33,6 @@ class TopupRequest extends FormRequest
     {
         return [
             'acc_no.required' => "Số tài khoản không được để trống",
-            'bank_no.required' => "Ngân hàng không được để trống",
             'amount.required' => "Số tiền không được để trống",
             'amount.numeric' => "Số tiền phải là một chữ số",
         ];

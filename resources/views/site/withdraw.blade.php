@@ -6,7 +6,7 @@
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-8">
+                    <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
                                 <h4 class="card-title">Rút tiền</h4>
@@ -20,17 +20,37 @@
                                 <form method="post" action="{{ route('post_withdraw') }}">
                                     @csrf
                                     <div class="row">
-                                        <div class="col-md-6">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Số tài khoản</label>
+                                                <input type="text" class="form-control" disabled placeholder="Số tài khoản"
+                                                       value="{{ $bankUser->acc_no }}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Ngân hàng</label>
+                                                <input type="text" class="form-control" disabled placeholder=""
+                                                       value="{{ $bankUser->bank->bank_name }} ({{ $bankUser->bank->bank_short_name }})">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Số tiền</label>
-                                                <input type="text" class="form-control" name="amount" placeholder="Số tiền rút"
+                                                <input type="number" class="form-control" name="amount" placeholder="Số tiền rút"
                                                        value="{{ old('amount') }}">
                                                 @error('amount')
                                                 <p class="text-danger"><i>{{ $message }}</i></p>
                                                 @enderror
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                        </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Mã khuyến mãi</label>
                                                 <input type="text" class="form-control" name="promotion_code" placeholder="Mã khuyến mãi"
@@ -40,7 +60,7 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                        </div>
+                                    </div>
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">

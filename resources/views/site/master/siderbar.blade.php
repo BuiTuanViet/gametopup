@@ -9,7 +9,7 @@
             <li class="nav-item {{  url()->current() == route('users') ? 'active' : ''}}">
                 <a class="nav-link" href="{{ route('dashboard') }}">
                     <i class="nc-icon nc-circle-09"></i>
-                    <p>User Profile</p>
+                    <p>Trang chủ</p>
                 </a>
             </li>
             <li class="nav-item {{  url()->current() == route('transactions') ? 'active' : ''}}">
@@ -28,6 +28,12 @@
                 <a class="nav-link" href="{{ route('withdraw') }}">
                     <i class="nc-icon nc-cloud-download-93"></i>
                     <p>Rút tiền</p>
+                </a>
+            </li>
+            <li class="nav-item {{  url()->current() == route('bank_user') ? 'active' : ''}}">
+                <a class="nav-link" href="{{ route('bank_user') }}">
+                    <i class="nc-icon nc-notes"></i>
+                    <p>Tài khoản Ngân hàng</p>
                 </a>
             </li>
             <li class="nav-item {{  url()->current() == route('promotion') ? 'active' : ''}}">

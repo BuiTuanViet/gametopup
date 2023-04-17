@@ -15,6 +15,17 @@
             padding-left: .75em;
             padding-right: .75em;
         }
+
+        body{
+            background: url("{{ asset('assset/img/background.jpg') }}");
+            background-size: cover;
+            background-repeat: no-repeat;
+            color: #fff
+        }
+        .card{
+            background-color: #ffffff42;
+        }
+
         .card-registration .select-arrow {
             top: 13px;
         }
@@ -34,7 +45,9 @@
                                 <div class="col-md-12 mb-4">
                                     <div class="form-outline">
                                         <label class="form-label" for="userName">Tên đăng nhập</label>
-                                        <input type="text" id="userName" name="user_name" class="form-control" value="{{ old('user_name') ?? ''}}" />
+                                        <input type="text" id="userName" name="user_name"
+                                               class="form-control" value="{{ old('user_name') ?? ''}}"
+                                                placeholder="Tên đăng nhập"/>
                                         @error('user_name')
                                         <p class="text-danger"><i>{{ $message }}</i></p>
                                         @enderror
@@ -43,7 +56,7 @@
                                 <div class="col-md-12 mb-4">
                                     <div class="form-outline">
                                         <label class="form-label" for="password">Mật khẩu</label>
-                                        <input type="password" id="password" name="password" class="form-control" />
+                                        <input type="password" id="password" name="password" class="form-control" placeholder="Mật khẩu" />
                                         @error('password')
                                         <p class="text-danger"><i>{{ $message }}</i></p>
                                         @enderror
@@ -53,7 +66,8 @@
                                 <div class="col-md-12 mb-4">
                                     <div class="form-outline">
                                         <label class="form-label" for="password_confirmation">Nhập lại Mật khẩu</label>
-                                        <input type="password" id="password_confirmation" name="password_confirmation" class="form-control" />
+                                        <input type="password" id="password_confirmation" name="password_confirmation"
+                                               class="form-control" placeholder="Nhập lại mật khẩu"/>
                                         @error('password_confirmation')
                                         <p class="text-danger"><i>{{ $message }}</i></p>
                                         @enderror
@@ -63,7 +77,7 @@
                                 <div class="col-md-12 mb-4">
                                     <div class="form-outline">
                                         <label class="form-label" for="name">Họ tên(Lưu ý: nhập đúng với tên tài khoản ngân hàng)</label>
-                                        <input type="text" id="name" name="name" class="form-control"  value="{{ old('name') ?? '' }}"/>
+                                        <input type="text" id="name" name="name" class="form-control"  value="{{ old('name') ?? '' }}" placeholder="Họ tên(Lưu ý: nhập đúng với tên tài khoản ngân hàng)"/>
                                         @error('name')
                                         <p class="text-danger"><i>{{ $message }}</i></p>
                                         @enderror
@@ -73,7 +87,7 @@
                                 <div class="col-md-12 mb-4">
                                     <div class="form-outline">
                                         <label class="form-label" for="phone">Số điện thoại</label>
-                                        <input type="text" id="phone" name="phone" class="form-control" value="{{ old('phone') ?? '' }}" />
+                                        <input type="text" id="phone" name="phone" class="form-control" value="{{ old('phone') ?? '' }}" placeholder="Số điện thoại" />
                                         @error('phone')
                                         <p class="text-danger"><i>{{ $message }}</i></p>
                                         @enderror
@@ -94,6 +108,8 @@
                                 </div>
                             <div class="col-md-12">
                                 <input class="btn btn-primary" type="submit" value="Đăng ký" />
+                                <label for="">Đã có tài khoản<a href="{{ route('get_login') }}">Đăng nhập tại đây</a></label>
+
                             </div>
                         </div>
                         </form>
