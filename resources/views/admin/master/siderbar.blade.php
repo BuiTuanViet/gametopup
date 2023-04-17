@@ -40,7 +40,7 @@
             </a>
           </li>
             <li class="nav-item has-treeview">
-                <a href="{{ route('bank-user.index') }}" class="nav-link {{ Request::is('bank_user') ? '' : '' }} ">
+                <a href="{{ route('bank-user.index') }}" class="nav-link {{ Request::is('bank-user') ? '' : '' }} ">
                     <i class="fa fa-info-circle "></i>
                     <p>
                         Danh sách tài khoản ngân hàng
@@ -48,10 +48,18 @@
                 </a>
             </li>
             <li class="nav-item has-treeview">
-                <a href="{{ route('bank-user.index') }}" class="nav-link {{ Request::is('bank_user') ? '' : '' }} ">
+                <a href="{{ route('bank.index') }}" class="nav-link {{ Request::is('bank') ? '' : '' }} ">
                     <i class="fa fa-university"></i>
                     <p>
                         Danh sách ngân hàng
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item has-treeview">
+                <a href="{{ route('promotion.index') }}" class="nav-link {{ Request::is('promotion') ? '' : '' }} ">
+                    <i class="fa fa-university"></i>
+                    <p>
+                        Danh sách khuyến mãi
                     </p>
                 </a>
             </li>

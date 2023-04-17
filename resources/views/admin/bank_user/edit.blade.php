@@ -3,7 +3,7 @@
 @section('content')
     <div class="card card-warning">
         <div class="card-header">
-            <h3 class="card-title">Chỉnh sửa thông tin : {{ $user->email }}</h3>
+            <h3 class="card-title">Chỉnh sửa số tài khoản cho người dùng</h3>
         </div>
         <div class="card-body">
             @if ($errors->any())
@@ -15,60 +15,53 @@
                     </ul>
                 </div>
             @endif
-                <form method="post" action="{{ route('user.update', ['user' => $user->id]) }}">
-                    @method('PUT')
-                    @csrf
-                    <div class="col-md-6 mb-4">
-                        <div class="form-outline">
-                            <label class="form-label" for="userName">Tên đăng nhập</label>
-                            <input type="text" id="userName" class="form-control" disabled value="{{  $user->user_name }}">
-                        </div>
+            <form method="post" action="{{ route('bank-user.update', ['bank_user' => $bankUser->id]) }}">
+                @method('PUT')
+                @csrf
+                <div class="col-md-6 mb-4">
+                    <div class="form-outline">
+                        <label class="form-label" for="userName">Tên tài khoản</label>
+                        <select name="user_id" class="form-control"  id="userName">
+                            <option value="">Vui lòng chọn</option>
+                            @foreach($users as $user)
+                                <option value="{{ $user->id }}" {{ old('user_id') ?? $bankUser->user_id  == $user->id ? 'selected' : '' }}>
+                                    {{ $user->user_name }} ({{ $user->name }})
+                                </option>
+                            @endforeach
+                        </select>
                     </div>
-                    <div class="col-md-6 mb-4">
-                        <div class="form-outline">
-                            <label class="form-label" for="password">Mật khẩu</label>
-                            <input type="text" id="password" name="password" class="form-control" value="{{ old('password') ?? \Illuminate\Support\Facades\Crypt::decrypt($user->password)}}">
-                        </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="form-outline">
+                        <label class="form-label" for="bank_no">Ngân hàng</label>
+                        <select name="bank_no" class="form-control"  id="bank_no">
+                            <option value="">Vui lòng chọn</option>
+                            @foreach($banks as $bank)
+                                <option value="{{ $bank->bank_no }}" {{ old('bank_no') ?? $bankUser->bank_no == $bank->bank_no ? 'selected' : '' }}>
+                                    {{ $bank->bank_short_name }}
+                                </option>
+                            @endforeach
+                        </select>
                     </div>
-                    <div class="col-md-6 mb-4">
-                        <div class="form-outline">
-                            <label class="form-label" for="name">Họ tên</label>
-                            <input type="text" id="name" name="name" class="form-control" value="{{ old('name') ??  $user->name }}">
-                        </div>
-                    </div>
+                </div>
 
-                    <div class="col-md-6 mb-4">
-                        <div class="form-outline">
-                            <label class="form-label" for="phone">Số điện thoại</label>
-                            <input type="text" id="phone" name="phone" class="form-control" value="{{ old('phone') ??  $user->phone }}">
-                        </div>
+                <div class="col-md-6 mb-4">
+                    <div class="form-outline">
+                        <label class="form-label" for="acc_name">Tên tài khoản</label>
+                        <input type="text" id="acc_name" name="acc_name" class="form-control" value="{{ old('acc_name') ?? $bankUser->acc_name }}">
                     </div>
-                    <div class="col-md-6 mb-4">
-                        <div class="form-outline">
-                            <label class="form-label" for="rate">Mức quy đổi </label>
-                            <select class="form-control" name="rate">
-                                <option value="1" {{ old('rate') ?? $user->rate == 1 ? "selected" : ''}}>1đ = 25.000đ</option>
-                                <option value="2" {{ old('rate') ?? $user->rate  == 2 ? "selected" : ''}}>1đ = 50.000đ</option>
-                                <option value="3" {{ old('rate') ?? $user->rate  == 3 ? "selected" : ''}}>1đ = 100.000đ</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-md-6 mb-4">
-                        <div class="form-outline">
-                            <label class="form-label" for="role">Vai trò</label>
-                            <select class="select form-control" name="role">
-                                <option value="0" {{ old('role') ?? $user->role == 0 ? "selected='true'" : '' }}>Người dùng</option>
-                                <option value="1" {{ old('role') ?? $user->role == 1 ? "selected='true'" : '' }}>Admin</option>
-                            </select>
-                        </div>
-                    </div>
+                </div>
 
-                    <div class="col-md-12">
-                        <input class="btn btn-primary" type="submit" value="Đăng ký">
+                <div class="col-md-6 mb-4">
+                    <div class="form-outline">
+                        <label class="form-label" for="acc_no">Số tài khoản</label>
+                        <input type="text" id="acc_no" name="acc_no" class="form-control" value="{{ old('acc_no') ?? $bankUser->acc_no }}">
                     </div>
-
-                </form>
-
+                </div>
+                <div class="col-md-12">
+                    <input class="btn btn-primary" type="submit" value="Lưu">
+                </div>
+            </form>
         </div>
     </div>
 @endsection

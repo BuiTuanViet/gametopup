@@ -21,6 +21,8 @@ Route::group(['namespace' => 'Admin', 'middleware' => 'admin', 'prefix' => 'admi
     Route::resource('information', 'InformationController');
     Route::resource('transaction', 'TransactionController');
     Route::resource('bank-user', 'BankUserController');
+    Route::resource('promotion', 'PromotionController');
+    Route::resource('bank', 'BankController');
 
 });
 Route::get('login-admin', 'AuthController@getLoginAdmin')->name('get_login_admin');

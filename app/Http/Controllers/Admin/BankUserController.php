@@ -55,7 +55,24 @@ class BankUserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $bankUser = new BankUser();
+        $checkBankUserExist =  BankUser::find($request->user_id);
+        if (!$checkBankUserExist){
+            return redirect()->back()->withErrors('Người dùng này đã được cấu hình tài khoản');
+        }
+        $data = [
+            'user_id' => $request->user_id,
+            'bank_no' => $request->bank_no,
+            'acc_no' => $request->acc_no,
+            'acc_name' => $request->acc_name,
+            'status' => 1,
+            'created_at' => new \DateTime(),
+        ];
+
+        $bankUser->insert($data);
+
+        return redirect(route('bank-user.index'))->with(['success', "Thêm mới thành công"]);
+
     }
 
     /**
@@ -66,7 +83,7 @@ class BankUserController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
@@ -77,7 +94,15 @@ class BankUserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $bankUser = BankUser::find($id);
+        $users = User::all();
+        $banks = Bank::all();
+
+        return view('admin.bank_user.edit')->with([
+            'users' => $users,
+            'banks' => $banks,
+            'bankUser' => $bankUser
+        ]);
     }
 
     /**
@@ -89,7 +114,13 @@ class BankUserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $bankUser =  BankUser::find($id);
+        $bankUser->bank_no = $request->bank_no;
+        $bankUser->acc_no = $request->acc_no;
+        $bankUser->acc_name = $request->acc_name;
+        $bankUser->save();
+
+        return redirect(route('bank-user.index'))->with(['success', "Cập nhật thành công"]);
     }
 
     /**
@@ -100,6 +131,8 @@ class BankUserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $bankUser = BankUser::find($id);
+        $bankUser->destroy($id);
+        return redirect(route('bank-user.index'))->with(['success', "Cập nhật thành công"]);
     }
 }
