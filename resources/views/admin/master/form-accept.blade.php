@@ -1,4 +1,3 @@
-<form id="form-delete" action="" method="POST">
-    @method('DELETE')
+<form id="form-accept" action="" method="GET">
     @csrf
 </form>

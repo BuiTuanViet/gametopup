@@ -2,13 +2,15 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 3 | Dashboard</title>
+  <title>Dashboard</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="{{ asset('fontawesome-free-5-web/css/all.css') }}">
   <!-- Ionicons -->
   <link rel="stylesheet" href="{{ asset('admin-lte/ionicons.min.css') }}">
+
+  <link rel="stylesheet" href="{{ asset('admin-lte/summernote-bs4.css') }}">
   <!-- Tempusdominus Bbootstrap 4 -->
   <link rel="stylesheet" href="{{ asset('admin-lte/tempusdominus-bootstrap-4.min.css') }}">
   <!-- iCheck -->
@@ -24,7 +26,7 @@
   <!-- summernote -->
   <link rel="stylesheet" href="{{ asset('admin-lte/summernote-bs4.css') }}">
   <!-- Google Font: Source Sans Pro -->
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+{{--  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">--}}
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -85,6 +87,16 @@
 
         if(confirm('Bạn có thật sự muốn xóa!')){
             $('#form-delete').submit();
+        }
+    }
+</script>
+
+<script>
+    function acceptItem(e) {
+        let url = $(e).attr('url');
+
+        if(confirm('Bạn có thật sự muốn kích hoạt tài khoản này không!')){
+            window.location.replace(url);
         }
     }
 </script>

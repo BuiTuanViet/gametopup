@@ -14,53 +14,31 @@
 <section class="login-block">
     <div class="container">
 	<div class="row">
-		<div class="col-md-4 login-sec">
-		    <h2 class="text-center">Login Now</h2>
-		    <form action="{{ route('login') }}" class="login-form" method="POST">
+		<div class="login-sec">
+		    <h2 class="text-center">Đăng nhập quản trị</h2>
+            @if($errors->any())
+                <p class="text-danger">{{$errors->first()}}</p>
+            @endif
+		    <form action="{{ route('post_login_admin') }}" class="login-form" method="POST">
             @csrf
                 <div class="form-group">
-                    <label for="exampleInputEmail1" class="text-uppercase">Username</label>
-                    <input name="email" type="text" class="form-control" placeholder="Email">
-                    
+                    <label for="exampleInputEmail1" class="text-uppercase">Tên đăng nhập</label>
+                    <input name="user_name" type="text" class="form-control" placeholder="Tên đăng nhập">
+
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputPassword1" class="text-uppercase">Password</label>
-                    <input name="password" type="password" class="form-control" placeholder="Password">
+                    <label for="exampleInputPassword1" class="text-uppercase">Mật khẩu</label>
+                    <input name="password" type="password" class="form-control" placeholder="Mật khẩu">
                 </div>
                     <div class="form-check">
-                    <button type="submit" class="btn btn-login float-right">Submit</button>
+                    <button type="submit" class="btn btn-login float-right">Đăng nhập</button>
                 </div>
             </form>
         </div>
-            <div class="col-md-8 banner-sec">
-            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                <ol class="carousel-indicators">
-                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                </ol>
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                    <img class="d-block w-100" src="assset/img/people-coffee-tea-meeting.jpg" alt="First slide">
-                    </div>
-                    <div class="carousel-item">
-                    <img class="d-block w-100" src="assset/img/pexels-photo.jpg" alt="Second slide">
-                    </div>
-                </div>
-                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
-                </div>
-            </div>	   
 		</div>
 	</div>
 </div>
 </section>
-    
+
 </body>
 </html>

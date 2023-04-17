@@ -15,25 +15,25 @@
                     </ul>
                 </div>
             @endif
-                <form method="post" action="{{ route('information.store') }}">
+                <form method="post" action="{{ route('information.update', ['information' => $information->id]) }}">
+                    @method('PUT')
                     @csrf
                         <div class="col-md-6 mb-4">
                             <div class="form-outline">
                                 <label class="form-label" for="title">Tên thông tin</label>
-                                <input type="text" id="title" name="title" class="form-control" value="{{ old('title') }}">
+                                <input type="text" id="title" name="title" class="form-control" value="{{ old('title') ?? $information->title }}">
                             </div>
                         </div>
                         <div class="col-md-6 mb-4">
                             <div class="form-outline">
                                 <label class="form-label" for="password">Nội dung thông tin </label>
-                                <textarea id="summernote"></textarea>
+                                <textarea id="summernote" name="content">{{ old('content') ?? $information->content }}</textarea>
                             </div>
                         </div>
 
                         <div class="col-md-12">
                             <input class="btn btn-primary" type="submit" value="Lưu">
                         </div>
-
                 </form>
         </div>
     </div>

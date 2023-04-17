@@ -4,32 +4,16 @@
     <div class="card mt-2">
         <div class="card-header">
             <h3 class="card-title">List User</h3>
-            <a href="{{ route('user.create') }}" class="btn btn-success float-right">Thêm mới</a>
+            <a href="{{ route('bank-user.create') }}" class="btn btn-success float-right">Thêm mới</a>
         </div>
         <div class="card-header">
-            <form action="{{ route('user.index') }}" method="get">
+            <form action="{{ route('bank-user.index') }}" method="get">
                 <div class="row">
                     <div class="form-group col-md-3">
                         <label for="user_name">Tên đăng nhập</label>
                         <input type="text" id="user_name" class="form-control" name="user_name" value="{{ request('user_name') }}">
                     </div>
 
-                    <div class="form-group col-md-3">
-                        <label for="status">Trạng thái</label>
-                        <select class="select form-control" name="status">
-                            <option value="">-- Tất cả --</option>
-                            <option value="0" {{ request('status') == '0' ? "selected" : ''}}>Chưa kích hoạt</option>
-                            <option value="1" {{ request('status') == 1 ? "selected" : ''}}>Đã kích hoạt</option>
-                        </select>
-                    </div>
-                    <div class="form-group col-md-3">
-                        <label for="type">Phân loại</label>
-                        <select class="select form-control" name="type">
-                            <option value="">-- Tất cả --</option>
-                            <option value="0" {{ request('type') == '0' ? "selected" : ''}}>Thành viên</option>
-                            <option value="1" {{ request('type') == 1 ? "selected" : ''}}>Admin</option>
-                        </select>
-                    </div>
                     <div class="form-group col-md-12">
                         <button type="submit" class="btn btn-primary"> Tìm kiếm</button>
                     </div>

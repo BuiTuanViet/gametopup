@@ -9,6 +9,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
@@ -24,13 +25,34 @@ class AuthController extends Controller
         return redirect(route('dashboard'));
     }
 
+    public function getLoginAdmin(){
+        if (!Auth::user()){
+            return view('admin.auth.login');
+        }
+        return redirect(route('statistical'));
+    }
+
     public function postLogin(LoginRequest $request)
     {
         $user = User::where('user_name', $request->input('user_name'))->first();
 
-        if ($user && Crypt::decrypt($user->password) === $request->input('password')) {
+        if ($user && Crypt::decrypt($user->password) === $request->input('password') && $user->status == 1) {
             Auth::login($user);
             return redirect(route('dashboard'));
+        } else {
+            return redirect()->back()->withErrors(['login' => 'Thông tin đăng nhập không chính xác']);
+        }
+
+        // Xác thực thất bại, quay trở lại trang đăng nhập với thông báo lỗi
+    }
+
+    public function postLoginAdmin(LoginRequest $request)
+    {
+        $user = User::where('user_name', $request->input('user_name'))->first();
+
+        if ($user && Crypt::decrypt($user->password) === $request->input('password') && $user->status == 1 && $user->role == 1) {
+            Auth::login($user);
+            return redirect(route('statistical'));
         } else {
             return redirect()->back()->withErrors(['login' => 'Thông tin đăng nhập không chính xác']);
         }
@@ -52,6 +74,7 @@ class AuthController extends Controller
             'name' => $request->name,
             'phone' => $request->phone,
             'rate' => $request->rate,
+            'created_at' => new \DateTime(),
         ];
 
         $id = $userModel->insertGetId($data);

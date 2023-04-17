@@ -28,6 +28,9 @@
                 <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
                     <div class="card-body p-4 p-md-5">
                         <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Đăng nhập </h3>
+                        @if($errors->any())
+                            <p class="text-danger">{{$errors->first()}}</p>
+                        @endif
                         <form method="post" action="{{ route('post_login') }}">
                             @csrf
                             <div class="row">

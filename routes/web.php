@@ -12,8 +12,19 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::group(['namespace' => 'Admin', 'middleware' => 'admin', 'prefix' => 'admin'] , function () {
+    Route::get('/', 'StatisticalController@index')->name('statistical');
+    Route::get('user-accept/{id}', 'UserController@accept')->name('accept_user');
+    Route::resource('user', 'UserController');
+    Route::get('transaction-accept/{trans_id}', 'TransactionController@accept')->name('transaction_accept');
+    Route::get('transaction-cancel/{trans_id}', 'TransactionController@cancel')->name('transaction_cancel');
+    Route::resource('information', 'InformationController');
+    Route::resource('transaction', 'TransactionController');
+    Route::resource('bank-user', 'BankUserController');
 
-
+});
+Route::get('login-admin', 'AuthController@getLoginAdmin')->name('get_login_admin');
+Route::post('post-login-admin', 'AuthController@postLoginAdmin')->name('post_login_admin');
 
 Route::get('login', 'AuthController@getLogin')->name('get_login');
 Route::post('login', 'AuthController@postLogin')->name('post_login');
