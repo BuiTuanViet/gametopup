@@ -18,7 +18,7 @@
 
                                 </p>
                                 <p>
-                                    Chuyển khoản với nội dung: <span class="text-danger"> NAP TIEN DON HANG {{ $trans->trans_id }}</span>
+                                    Chuyển khoản với nội dung: <span class="text-danger"> {{ $trans->memo }}</span>
                                 </p>
                                 <p>
                                     Chúng tôi sẽ cập nhật đơn hàng sau khi nhận được thanh toán.

@@ -18,8 +18,8 @@ class TransactionController extends Controller
     {
         $transactions = Transaction::with('user');
 
-        if ($request->trans_id){
-            $transactions = $transactions->where('trans_id', $request->trans_id);
+        if ($request->user_name){
+            $transactions = $transactions->where('user_name', $request->user_name);
         }
         if ($request->time_range){
             $timeArr = explode('-', $request->time_range);
@@ -38,6 +38,70 @@ class TransactionController extends Controller
 
         return view('admin.transaction.index')->with([
             'transactions' => $transactions
+        ]);
+    }
+
+    public function topup(Request $request)
+    {
+        $transactions = Transaction::with('user')->where('type', 0);
+
+        if ($request->user_name){
+            $transactions = $transactions->where('user_name', $request->user_name);
+        }
+        if ($request->time_range){
+            $timeArr = explode('-', $request->time_range);
+            $timeStart = date('Y-m-d 00:00:00', strtotime(trim($timeArr[0])));
+            $timeEnd =  date('Y-m-d 23:59:59', strtotime(trim($timeArr[0])));
+            $transactions = $transactions->where('request_time', '>=', $timeStart)
+                ->where('request_time', '<=', $timeEnd);
+        }
+        if ($request->status){
+            $transactions = $transactions->where('status', $request->status);
+        }
+        if ($request->type){
+            $transactions = $transactions->where('type', $request->type);
+        }
+        $totalTrans = $transactions->count();
+        $sumTransAmount = $transactions->sum('amount');
+
+        $transactions = $transactions->paginate(10);
+
+        return view('admin.transaction.topup')->with([
+            'transactions' => $transactions,
+            'totalTrans' => $totalTrans,
+            'sumTransAmount' => $sumTransAmount,
+        ]);
+    }
+
+    public function withdraw(Request $request)
+    {
+        $transactions = Transaction::with('user')->where('type', 1);
+
+        if ($request->user_name){
+            $transactions = $transactions->where('user_name', $request->user_name);
+        }
+        if ($request->time_range){
+            $timeArr = explode('-', $request->time_range);
+            $timeStart = date('Y-m-d 00:00:00', strtotime(trim($timeArr[0])));
+            $timeEnd =  date('Y-m-d 23:59:59', strtotime(trim($timeArr[0])));
+            $transactions = $transactions->where('request_time', '>=', $timeStart)
+                ->where('request_time', '<=', $timeEnd);
+        }
+        if ($request->status){
+            $transactions = $transactions->where('status', $request->status);
+        }
+        if ($request->type){
+            $transactions = $transactions->where('type', $request->type);
+        }
+        $totalTrans = $transactions->count();
+        $sumTransAmount = $transactions->sum('amount');
+
+        $transactions = $transactions->paginate(10);
+
+        return view('admin.transaction.withdraw')->with([
+            'transactions' => $transactions,
+            'totalTrans' => $totalTrans,
+            'sumTransAmount' => $sumTransAmount,
         ]);
     }
 

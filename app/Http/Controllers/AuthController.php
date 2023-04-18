@@ -73,6 +73,7 @@ class AuthController extends Controller
             'password' => Crypt::encrypt($request->password),
             'name' => $request->name,
             'phone' => $request->phone,
+            'zalo' => $request->zalo,
             'rate' => $request->rate,
             'created_at' => new \DateTime(),
         ];

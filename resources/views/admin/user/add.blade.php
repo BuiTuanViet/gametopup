@@ -60,10 +60,21 @@
                                 <select class="select form-control" name="role">
                                     <option value="0" {{ old('role') == 0 ? "selected" : ''}}>Người dùng</option>
                                     <option value="1" {{ old('role') == 1 ? "selected" : ''}}>Admin</option>
+                                    <option value="2" {{ old('role') == 2 ? "selected" : ''}}>Sale</option>
                                 </select>
                             </div>
                         </div>
-
+                        <div class="col-md-6 mb-4">
+                            <div class="form-outline">
+                                <label class="form-label" for="sale_id">Sale</label>
+                                <select class="select form-control" name="sale_id">
+                                    <option value="">-- Chọn sale phụ trách --</option>
+                                    @foreach($sales as $sale)
+                                    <option value="{{ $sale->id }}" {{ old('sale_id') == $sale->id ? "selected" : ''}}>{{ $sale->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
                         <div class="col-md-12">
                             <input class="btn btn-primary" type="submit" value="Đăng ký">
                         </div>

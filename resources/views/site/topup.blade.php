@@ -49,6 +49,19 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
+                                                <label for="memo">Nội dung chuyển tiền</label>
+                                                <input type="text" class="form-control" name="memo"
+                                                       placeholder="Nội dung chuyển tiền"
+                                                       value="{{ old('memo') }}">
+                                                @error('memo')
+                                                <p class="text-danger"><i>{{ $message }}</i></p>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
                                                 <label for="exampleInputEmail1">Mã khuyến mãi</label>
                                                 <input type="text" class="form-control" name="promotion_code"
                                                        placeholder="Mã khuyến mãi"

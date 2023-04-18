@@ -26,32 +26,32 @@ class UserRequest extends FormRequest
         return [
             'user_name' => [
                 'required',
-                'regex:/^[a-zA-Z0-9\s]{1,15}$/',
+                'regex:/^[a-zA-Z0-9\s]{8,15}$/',
                 'unique:users'
             ],
             'password' => [
                 'required',
-                'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/',
+                'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,15}$/',
                 'confirmed'
             ],
             'password_confirmation' => 'required',
             'name' => 'required',
             'phone' => 'required|numeric',
+            'zalo' => 'required|numeric',
         ];
     }
 
     public function messages()
     {
         return [
-            'user_name.required' => "Tên đăng nhập không được để trống.",
-            'user_name.regex' => "Tên đăng nhập không được chứa ký tự đặc biệt.",
-            'user_name.unique' => "Tên đăng nhập đã tồn tại.",
-            'password.required' => "Mật khẩu không được để trống.",
+            'user_name.*' => "Tên đăng nhập phải là chữ hoa hoặc chữ thường không dấu và dài 8-15 ký tự.",
             'password.confirmed' => "Mật khẩu không không giống nhau.",
-            'password.regex' => "Mật khẩu phải lớn hơn 8 ký tự, không được chứa ký tự đặc biệt và có cả chữ hoa và chữ thường.",
+            'password.regex' => "Mật khẩu phải có 8 - 15 ký tự, không được chứa ký tự đặc biệt và có cả chữ hoa và chữ thường.",
+            'password.required' => "Mật khẩu phải có 8 - 15 ký tự, không được chứa ký tự đặc biệt và có cả chữ hoa và chữ thường.",
             'password_confirmation.required' => "Xác nhận mật khẩu không được để trống.",
             'name.required' => "Tên không được để trống.",
             'phone.required' => "Số điện thoại không được để trống.",
+            'zalo.required' => "Số điện thoại không được để trống.",
         ];
     }
 }

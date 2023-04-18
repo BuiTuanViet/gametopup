@@ -18,7 +18,7 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        $users = new User();
+        $users = User::with('sale');
         if ($request->user_name){
             $users = $users->where('user_name', $request->user_name);
         }
@@ -29,6 +29,7 @@ class UserController extends Controller
             $users = $users->where('type', $request->type);
         }
         $users = $users->paginate(10);
+
         return view('admin.user.list')->with([
             'users' => $users
         ]);
@@ -41,7 +42,11 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('admin.user.add');
+        $usersSale = User::where('role', '2')->get();
+
+        return view('admin.user.add')->with([
+            'sales' => $usersSale
+        ]);
     }
 
     /**
@@ -60,6 +65,7 @@ class UserController extends Controller
                 'phone' => $request->phone,
                 'rate' => $request->rate,
                 'role' => $request->role,
+                'sale_id' => $request->sale_id,
                 'created_at' => new \DateTime(),
             ];
 
@@ -87,9 +93,12 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $user = User::find($id);
+        $user = User::with('sale')->find($id);
+        $usersSale = User::where('role', '2')->get();
+
         return view('admin.user.edit')->with([
-            'user' => $user
+            'user' => $user,
+            'sales' => $usersSale
         ]);
     }
 
@@ -107,6 +116,7 @@ class UserController extends Controller
         $user->phone = $request->phone;
         $user->rate = $request->rate;
         $user->role = $request->role;
+        $user->sale_id = $request->sale_id;
         $user->save();
 
         return redirect(route('user.index'))->with(['success', "Cập nhật thành công"]);

@@ -24,10 +24,11 @@
                     </div>
                     <div class="form-group col-md-3">
                         <label for="type">Phân loại</label>
-                        <select class="select form-control" name="type">
+                        <select class="select form-control" name="role">
                             <option value="">-- Tất cả --</option>
-                            <option value="0" {{ request('type') == '0' ? "selected" : ''}}>Thành viên</option>
-                            <option value="1" {{ request('type') == 1 ? "selected" : ''}}>Admin</option>
+                            <option value="0" {{ request('role') == '0' ? "selected" : ''}}>Thành viên</option>
+                            <option value="1" {{ request('role') == 1 ? "selected" : ''}}>Admin</option>
+                            <option value="2" {{ request('role') == 2 ? "selected" : ''}}>Sale</option>
                         </select>
                     </div>
                     <div class="form-group col-md-12">
@@ -42,18 +43,20 @@
                 {{ session('success') }}
             </div>
         @endif
-        <div class="card-body">
-            <table class="table table-bordered">
+        <div class="card-body" style="overflow-x: scroll">
+            <table class="table table-bordered" style="width: 1200px">
                 <thead>
                 <tr>
                     <th style="width: 10px">ID</th>
                     <th>User Name</th>
                     <th>Mật khẩu</th>
                     <th>Tên</th>
+                    <th>Sale phụ trách</th>
                     <th>Số điện thoại</th>
                     <th>Mức quy đổi</th>
-                    <th>Phân loại</th>
                     <th>Trạng thái</th>
+                    <th>Phân loại</th>
+
                     <th style="width: 150px">Thao tác</th>
                 </tr>
                 </thead>
@@ -64,6 +67,13 @@
                     <td>{{ $user->user_name }}</td>
                     <td>{{ \Illuminate\Support\Facades\Crypt::decrypt($user->password) }}</td>
                     <td>{{ $user->name }}</td>
+                    <td>
+                        @if(isset($user->sale->name))
+                            <span class="badge badge-success">{{ $user->sale->name }}</span>
+                        @else
+                            <span class="badge badge-warning">Chưa gán sale</span>
+                        @endif
+                       </td>
                     <td>
                         {{ $user->phone }}
                     </td>
@@ -81,16 +91,6 @@
                         @endswitch
                     </td>
                     <td>
-                        @switch($user->role)
-                            @case(0)
-                            Người dùng
-                            @break
-                            @case(1)
-                            Admin
-                            @break
-                        @endswitch
-                    </td>
-                    <td>
                         @switch($user->status)
                             @case(0)
                             <span class="badge badge-warning">Chưa kích hoạt</span>
@@ -100,6 +100,20 @@
                             @break
                         @endswitch
                     </td>
+                    <td>
+                        @switch($user->role)
+                            @case(0)
+                            Người dùng
+                            @break
+                            @case(1)
+                            Admin
+                            @break
+                            @case(2)
+                            Sale
+                            @break
+                        @endswitch
+                    </td>
+
                     <td style="width: 150px">
                         <a href="{{ route('user.edit', ['user' => $user->id]) }}" title="Chỉnh sửa">
                             <button class="btn btn-primary">

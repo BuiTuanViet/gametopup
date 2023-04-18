@@ -36,4 +36,8 @@ class User extends Authenticatable
     {
         return Crypt::decrypt($this->attributes['password']);
     }
+
+    public function sale(){
+        return $this->hasOne(User::class, 'id', 'sale_id');
+    }
 }

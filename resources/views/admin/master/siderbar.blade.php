@@ -40,6 +40,22 @@
             </a>
           </li>
             <li class="nav-item has-treeview">
+                <a href="{{ route('transaction_topup') }}" class="nav-link {{ Request::is('topup') ? '' : '' }} ">
+                    <i class=" fa fa-list"></i>
+                    <p>
+                        Lệnh nạp
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item has-treeview">
+                <a href="{{ route('transaction_withdraw') }}" class="nav-link {{ Request::is('withdraw') ? '' : '' }} ">
+                    <i class=" fa fa-list"></i>
+                    <p>
+                        Lệnh rút
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item has-treeview">
                 <a href="{{ route('bank-user.index') }}" class="nav-link {{ Request::is('bank-user') ? '' : '' }} ">
                     <i class="fa fa-info-circle "></i>
                     <p>

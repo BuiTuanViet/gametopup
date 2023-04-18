@@ -47,6 +47,7 @@ class TransactionController extends Controller
             'trans_id' => CommonHelper::generateTransId(),
             'bank_no' => $bankAdmin->bank_no,
             'acc_no' => $bankAdmin->acc_no,
+            'memo' => $request->memo,
             'amount' => $request->amount,
             'user_id' => Auth::user()->id,
             'type' => '0',
