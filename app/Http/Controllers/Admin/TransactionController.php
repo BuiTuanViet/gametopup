@@ -24,7 +24,7 @@ class TransactionController extends Controller
         if ($request->time_range){
             $timeArr = explode('-', $request->time_range);
             $timeStart = date('Y-m-d 00:00:00', strtotime(trim($timeArr[0])));
-            $timeEnd =  date('Y-m-d 23:59:59', strtotime(trim($timeArr[0])));
+            $timeEnd =  date('Y-m-d 23:59:59', strtotime(trim($timeArr[1])));
             $transactions = $transactions->where('request_time', '>=', $timeStart)
                 ->where('request_time', '<=', $timeEnd);
         }

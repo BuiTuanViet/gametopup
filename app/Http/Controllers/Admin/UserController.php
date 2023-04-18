@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\UserCreateRequest;
 use App\Http\Requests\Admin\UserUpdateRequest;
+use App\Models\Group;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
@@ -28,6 +29,7 @@ class UserController extends Controller
         if ($request->type){
             $users = $users->where('type', $request->type);
         }
+
         $users = $users->paginate(10);
 
         return view('admin.user.list')->with([
@@ -42,10 +44,12 @@ class UserController extends Controller
      */
     public function create()
     {
-        $usersSale = User::where('role', '2')->get();
+        $usersSale = User::with('group')->where('role', '2')->get();
+        $groups = Group::get();
 
         return view('admin.user.add')->with([
-            'sales' => $usersSale
+            'sales' => $usersSale,
+            'groups' => $groups
         ]);
     }
 
@@ -66,6 +70,7 @@ class UserController extends Controller
                 'rate' => $request->rate,
                 'role' => $request->role,
                 'sale_id' => $request->sale_id,
+                'group_id' => $request->group_id,
                 'created_at' => new \DateTime(),
             ];
 
@@ -93,12 +98,14 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $user = User::with('sale')->find($id);
-        $usersSale = User::where('role', '2')->get();
+        $user = User::with('sale', 'group')->find($id);
+        $usersSale = User::with('group')->where('role', '2')->get();
+        $groups = Group::get();
 
         return view('admin.user.edit')->with([
             'user' => $user,
-            'sales' => $usersSale
+            'sales' => $usersSale,
+            'groups' => $groups,
         ]);
     }
 
@@ -117,6 +124,7 @@ class UserController extends Controller
         $user->rate = $request->rate;
         $user->role = $request->role;
         $user->sale_id = $request->sale_id;
+        $user->group_id = $request->group_id;
         $user->save();
 
         return redirect(route('user.index'))->with(['success', "Cập nhật thành công"]);

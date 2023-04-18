@@ -1,19 +1,20 @@
-  <!-- Navbar -->
-  <nav class=" navbar navbar-expand navbar-primary navbar-dark">
-    <!-- Left navbar links -->
-    <ul class="navbar-nav">
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="{{ route('top.site') }}" class="nav-link">Home</a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="{{ route('top.total') }}" class="nav-link">Chi Tiết</a>
-      </li>
-    </ul>
-    <!-- Right navbar links -->
-    <ul class="navbar-nav ml-auto">
-        <li class="nav-item d-none d-sm-inline-block">
-            <a href="{{ route('logout') }}" class="nav-link text-white">Logout <i class="fas fa-sign-out-alt"></i>
-            </a>
-        </li>
-    </ul>
-  </nav>
+<nav class="navbar navbar-expand-lg d-none" color-on-scroll="500">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#pablo"> </a>
+        <button href="" class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-bar burger-lines"></span>
+            <span class="navbar-toggler-bar burger-lines"></span>
+            <span class="navbar-toggler-bar burger-lines"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navigation">
+
+        </div>
+    </div>
+</nav>
+<style>
+    @media screen and (max-width: 768px) {
+        .navbar {
+            display: block !important;
+        }
+    }
+</style>

@@ -19,6 +19,7 @@
         }
     </style>
     <div class="main-panel">
+        @include('site.master.header')
         <!-- End Navbar -->
         <div class="content">
             <div class="container-fluid">
@@ -76,7 +77,7 @@
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <a href="">
+                        <a href="{!! $information['link-choi-game'] !!}">
                             <div class="card card-item" style="background: url('assset/img/img.jpg') no-repeat center">
                                 <div class="card-body">
                                     <i class="fa fa-play-circle"></i>

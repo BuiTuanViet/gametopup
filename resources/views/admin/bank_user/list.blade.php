@@ -3,7 +3,7 @@
 @section('content')
     <div class="card mt-2">
         <div class="card-header">
-            <h3 class="card-title">List User</h3>
+            <h3 class="card-title">Thông tin ngân hàng người dùng</h3>
             <a href="{{ route('bank-user.create') }}" class="btn btn-success float-right">Thêm mới</a>
         </div>
         <div class="card-header">
@@ -51,7 +51,7 @@
                         {{ $item->acc_no }}
                     </td>
                     <td>{{ $item->user->user_name }}</td>
-                    <td>{{ $item->bank->bank_short_name }}</td>
+                    <td>{{ isset($item->bank->bank_short_name) ? $item->bank->bank_short_name : '' }}</td>
                     <td>
                         {{ $item->acc_name }}
                     </td>

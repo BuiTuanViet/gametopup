@@ -30,11 +30,27 @@
                             </select>
                         </div>
                     </div>
+                    <div class="form-group col-md-4">
+                        <label for="group_id">Nhóm</label>
+                        <div class="input-group">
+                            <select class="select form-control" name="group_id">
+                                <option value="">-- Tất cả --</option>
+                                @foreach($groups as $group)
+                                    <option value="{{ $group->id }}" {{ request('group_id') == $group->id ? "selected" : ''}}>
+                                        {{ $group->group_name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
                     <div class="form-group col-md-12">
                         <button type="submit" class="btn btn-primary"> Tìm kiếm</button>
                     </div>
                 </div>
             </form>
+        </div>
+        <div class="card-header">
+            <h3 class="card-title">Doanh thu tổng </h3>
         </div>
         <div class="card-body">
             <table class="table table-bordered">
@@ -64,12 +80,16 @@
                 {{ session('success') }}
             </div>
         @endif
+        <div class="card-header">
+            <h3 class="card-title">Doanh thu theo sale </h3>
+        </div>
         <div class="card-body">
             <table class="table table-bordered">
                 <thead>
                 <tr>
                     <th style="width: 10px">ID</th>
                     <th>Tên</th>
+                    <th>Nhóm</th>
                     <th>Tổng gd nạp</th>
                     <th>Số tiền nạp</th>
                     <th>Tổng gd rút</th>
@@ -85,6 +105,7 @@
                 <tr>
                     <td>{{ $id += 1 }}</td>
                     <td>{{ $item->name }}</td>
+                    <td>{{ isset($item->group) ? $item->group : '' }}</td>
                     <td>{{ number_format($item->total_topup) }}</td>
                     <td>{{ number_format($item->sum_topup) }}</td>
                     <td>{{ number_format($item->total_withdraw) }}</td>

@@ -42,11 +42,7 @@
                         <td>{{ date('d-m-Y', strtotime($item->time_end)) }}</td>
 
                         <td style="width: 150px">
-                            <a href="{{ route('promotion.edit', ['promotion' => $item->id]) }}" title="Chỉnh sửa">
-                                <button class="btn btn-primary">
-                                    <i class="fa fa-pencil-alt"></i>
-                                </button>
-                            </a>
+                        
                             <a onclick="deleteItem(this);" url="{{ route('promotion.destroy', ['promotion' => $item->id]) }}" title="Xóa"><button class="btn btn-danger"><i class="fa fa-trash-alt"></i></button></a>
                         </td>
                     </tr>

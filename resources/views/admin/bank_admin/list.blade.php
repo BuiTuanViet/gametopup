@@ -3,7 +3,7 @@
 @section('content')
     <div class="card mt-2">
         <div class="card-header">
-            <h3 class="card-title">List User</h3>
+            <h3 class="card-title">Danh sách ngân hàng </h3>
             <a href="{{ route('bank-admin.create') }}" class="btn btn-success float-right">Thêm mới</a>
         </div>
 
@@ -31,7 +31,7 @@
                     <td>{{ $item->acc_no }}</td>
                     <td>{{ $item->acc_name }}</td>
                     <td>
-                        {{ $item->bank->bank_name }}({{ $item->bank->bank_short_name }})
+                        {{ isset($item->bank->bank_name) ? $item->bank->bank_name : '' }}({{ isset($item->bank->bank_short_name) ? $item->bank->bank_short_name : '' }})
                     </td>
                     <td style="width: 150px">
                         <a href="{{ route('bank-admin.edit', ['bank_admin' => $item->id]) }}" title="Chỉnh sửa">

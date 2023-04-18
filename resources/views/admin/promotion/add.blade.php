@@ -3,7 +3,7 @@
 @section('content')
     <div class="card card-warning">
         <div class="card-header">
-            <h3 class="card-title">Thêm mới khuyến mãi</h3>
+            <h3 class="card-title">Danh sách khuyến mãi</h3>
         </div>
         <div class="card-body">
             @if ($errors->any())

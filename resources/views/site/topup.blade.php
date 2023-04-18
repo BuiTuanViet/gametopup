@@ -96,7 +96,30 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                        <p>1. Thời gian nạp tiền từ 09:00 - 22:00 hàng ngày</p>
+
+                        <p>2. Nạp rút thấp nhất 20đ cho 1 lần nạp</p>
+                        <ul>
+                            <li> Mức đô 25 = 500.000</li>
+                            <li> Mức đô 50 = 1.000.000</li>
+                            <li> Mức đô 100 = 2.000.000</li>
+                        </ul>
+
+                        <p>3. Tiền khi nạp sẽ được cập nhật trong vòng 1 phút ,nếu ghi đúng nội dung</p>
+
+                        <p>4. Rút tiền về tài khoản ATM từ 3-5 phút</p>
+
+                       <p>5. Mọi thắc mắc liên hệ :</p>
+                        <ul>
+                            <li> Livechat</li>
+                            <li> Hotline : <a href="0393833327"></a>03938.333.27</li>
+                            <li> Telegram : @cskhalowin247</li>
+                        </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

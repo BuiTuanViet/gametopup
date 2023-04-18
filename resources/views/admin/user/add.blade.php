@@ -26,7 +26,7 @@
                         <div class="col-md-6 mb-4">
                             <div class="form-outline">
                                 <label class="form-label" for="password">Mật khẩu</label>
-                                <input type="password" id="password" name="password" class="form-control" value="{{ old('password') }}">
+                                <input type="text" id="password" name="password" class="form-control" value="{{ old('password') }}">
                             </div>
                         </div>
 
@@ -70,7 +70,18 @@
                                 <select class="select form-control" name="sale_id">
                                     <option value="">-- Chọn sale phụ trách --</option>
                                     @foreach($sales as $sale)
-                                    <option value="{{ $sale->id }}" {{ old('sale_id') == $sale->id ? "selected" : ''}}>{{ $sale->name }}</option>
+                                    <option value="{{ $sale->id }}" {{ old('sale_id') == $sale->id ? "selected" : ''}}>{{ $sale->name }} -  {{ isset($sale->group->group_name) ?  $sale->group->group_name : 'Sale Chưa có nhóm' }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="form-outline">
+                                <label class="form-label" for="group_id">Nhóm</label>
+                                <select class="select form-control" name="group_id">
+                                    <option value="">-- Chọn nhóm --</option>
+                                    @foreach($groups as $group)
+                                        <option value="{{ $group->id }}" {{ old('group_id') == $group->id ? "selected" : ''}}>{{ $group->group_name }}</option>
                                     @endforeach
                                 </select>
                             </div>

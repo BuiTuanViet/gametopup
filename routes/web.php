@@ -26,6 +26,7 @@ Route::group(['namespace' => 'Admin', 'middleware' => 'admin', 'prefix' => 'admi
     Route::resource('bank-user', 'BankUserController');
     Route::resource('promotion', 'PromotionController');
     Route::resource('bank', 'BankController');
+    Route::resource('group', 'GroupController');
     Route::resource('bank-admin', 'BankAdminController');
     Route::get('revenue', 'RevenueController@index')->name('revenue');
 

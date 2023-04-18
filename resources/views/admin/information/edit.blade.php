@@ -27,7 +27,7 @@
                         <div class="col-md-6 mb-4">
                             <div class="form-outline">
                                 <label class="form-label" for="password">Nội dung thông tin </label>
-                                <textarea id="summernote" name="content">{{ old('content') ?? $information->content }}</textarea>
+                                <textarea class="form-control" name="content">{{ old('content') ?? $information->content }}</textarea>
                             </div>
                         </div>
 

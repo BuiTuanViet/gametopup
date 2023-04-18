@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Group;
 use App\Models\Transaction;
 use App\User;
 use Illuminate\Http\Request;
@@ -10,20 +11,30 @@ use Illuminate\Http\Request;
 class RevenueController extends Controller
 {
     public function index(Request $request){
-        $users = User::where('role', 2);
+        $groups = Group::orderBy('id', 'ASC');
+        $users = User::with('group')->where('role', 2);
         if ($request->sale_id){
             $users = $users->where('id', $request->sale_id);
         }
+        if ($request->group_id){
+            $users = $users->where('group_id', $request->group_id);
+
+            $arrUser = json_decode(json_encode($users->pluck('id')),true);
+        }
         $users = $users->get();
+        $groups = $groups->get();
         $data = [];
 
         $trans = new Transaction();
         if ($request->time_range){
             $timeArr = explode('-', $request->time_range);
             $timeStart = date('Y-m-d 00:00:00', strtotime(trim($timeArr[0])));
-            $timeEnd =  date('Y-m-d 23:59:59', strtotime(trim($timeArr[0])));
+            $timeEnd =  date('Y-m-d 23:59:59', strtotime(trim($timeArr[1])));
             $trans = $trans->where('request_time', '>=', $timeStart)
                 ->where('request_time', '<=', $timeEnd);
+        }
+        if ($request->group_id){
+            $trans = $trans->whereIn('sale_id', $arrUser);
         }
         $totalTopupAll = $trans->where('type', 0)->count();
         $sumTopupAll = $trans->where('type', 0)->sum('amount');
@@ -59,6 +70,7 @@ class RevenueController extends Controller
             }
 
             $data[$item->id]['user_name'] = $item->user_name;
+            $data[$item->id]['group'] = isset($item->group->group_name) ? $item->group->group_name : '';
             $data[$item->id]['name'] = $item->name;
             $data[$item->id]['total_topup'] = $totalTopup;
             $data[$item->id]['sum_topup'] = $sumTopup;
@@ -70,6 +82,7 @@ class RevenueController extends Controller
 
         return view('admin.revenue.list')->with([
             'revenues' => $data,
+            'groups' => $groups,
             'sales' => $users,
             'totalTopupAll' => $totalTopupAll ,
             'sumTopupAll' => $sumTopupAll,
