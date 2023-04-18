@@ -36,10 +36,10 @@
                 <thead>
                 <tr>
                     <th style="width: 10px">ID</th>
-                    <th>User Name</th>
+                    <th>Số tài khoản</th>
+                    <th>Họ tên</th>
                     <th>Ngân hàng</th>
                     <th>Tên tài khoản</th>
-                    <th>Số tài khoản</th>
                     <th style="width: 150px">Thao tác</th>
                 </tr>
                 </thead>
@@ -47,13 +47,13 @@
                 @foreach($bankUsers as $index => $item)
                 <tr>
                     <td>{{ $index + 1 }}</td>
+                    <td>
+                        {{ $item->acc_no }}
+                    </td>
                     <td>{{ $item->user->user_name }}</td>
                     <td>{{ $item->bank->bank_short_name }}</td>
                     <td>
                         {{ $item->acc_name }}
-                    </td>
-                    <td>
-                        {{ $item->acc_no }}
                     </td>
                     <td style="width: 150px">
                         <a href="{{ route('bank-user.edit', ['bank_user' => $item->id]) }}" title="Chỉnh sửa">

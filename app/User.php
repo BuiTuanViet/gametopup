@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Models\Transaction;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -39,5 +40,9 @@ class User extends Authenticatable
 
     public function sale(){
         return $this->hasOne(User::class, 'id', 'sale_id');
+    }
+
+    public function transactionInCharge(){
+        return $this->hasMany(Transaction::class, 'id', 'sale_id');
     }
 }

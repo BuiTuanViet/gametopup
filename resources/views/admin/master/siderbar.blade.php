@@ -56,6 +56,14 @@
                 </a>
             </li>
             <li class="nav-item has-treeview">
+                <a href="{{ route('transaction_pending') }}" class="nav-link {{ Request::is('pending') ? '' : '' }} ">
+                    <i class=" fa fa-list"></i>
+                    <p>
+                        Chờ duyệt
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item has-treeview">
                 <a href="{{ route('bank-user.index') }}" class="nav-link {{ Request::is('bank-user') ? '' : '' }} ">
                     <i class="fa fa-info-circle "></i>
                     <p>
@@ -64,7 +72,7 @@
                 </a>
             </li>
             <li class="nav-item has-treeview">
-                <a href="{{ route('bank.index') }}" class="nav-link {{ Request::is('bank') ? '' : '' }} ">
+                <a href="{{ route('bank-admin.index') }}" class="nav-link {{ Request::is('bank-admin') ? '' : '' }} ">
                     <i class="fa fa-university"></i>
                     <p>
                         Danh sách ngân hàng
@@ -76,6 +84,14 @@
                     <i class="fa fa-university"></i>
                     <p>
                         Danh sách khuyến mãi
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item has-treeview">
+                <a href="{{ route('revenue') }}" class="nav-link {{ Request::is('revenue') ? '' : '' }} ">
+                    <i class="fa fa-university"></i>
+                    <p>
+                        Doanh thu
                     </p>
                 </a>
             </li>

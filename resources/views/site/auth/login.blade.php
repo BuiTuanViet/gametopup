@@ -26,7 +26,7 @@
             color: #fff
         }
         .card{
-            background-color: #ffffff42;
+            background-color: #2415153d;
         }
     </style>
 </head>

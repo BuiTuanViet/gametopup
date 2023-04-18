@@ -23,7 +23,7 @@
             color: #fff
         }
         .card{
-            background-color: #ffffff42;
+            background-color: #2415153d;
         }
 
         .card-registration .select-arrow {
@@ -56,7 +56,7 @@
                                 <div class="col-md-12 mb-4">
                                     <div class="form-outline">
                                         <label class="form-label" for="password">Mật khẩu</label><span>*</span>
-                                        <input type="password" id="password" name="password" class="form-control" placeholder="Mật khẩu" />
+                                        <input type="password" id="password" name="password" class="form-control" placeholder="8-15 ký tự, ít nhất 2 chữ cái 1 chữ viết HOA và số" />
                                         @error('password')
                                         <p class="text-white-50"><i>{{ $message }}</i></p>
                                         @enderror

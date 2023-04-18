@@ -21,10 +21,13 @@ Route::group(['namespace' => 'Admin', 'middleware' => 'admin', 'prefix' => 'admi
     Route::resource('information', 'InformationController');
     Route::get('transaction/topup', 'TransactionController@topup')->name('transaction_topup');
     Route::get('transaction/withdraw', 'TransactionController@withdraw')->name('transaction_withdraw');
+    Route::get('transaction/pending', 'TransactionController@pending')->name('transaction_pending');
     Route::resource('transaction', 'TransactionController');
     Route::resource('bank-user', 'BankUserController');
     Route::resource('promotion', 'PromotionController');
     Route::resource('bank', 'BankController');
+    Route::resource('bank-admin', 'BankAdminController');
+    Route::get('revenue', 'RevenueController@index')->name('revenue');
 
 });
 Route::get('login-admin', 'AuthController@getLoginAdmin')->name('get_login_admin');

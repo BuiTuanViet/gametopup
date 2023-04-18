@@ -29,13 +29,11 @@
                                 <h4 class="card-title">Thông tin tài khoản</h4>
                             </div>
                             <div class="card-body">
-                                <form method="post" action="{{ route('update_user') }}">
-                                    @csrf
                                     <div class="row">
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Tên đăng nhập</label>
-                                                <input type="text" class="form-control" disabled placeholder=""
+                                                <input type="text" class="form-control" disabled placeholder="" disabled
                                                        value="{{ $user->user_name }}">
                                                 @error('user_name')
                                                 <p class="text-danger"><i>{{ $message }}</i></p>
@@ -45,7 +43,7 @@
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Họ Tên</label>
-                                                <input type="text" class="form-control" name="name" placeholder="Họ tên"
+                                                <input type="text" class="form-control" name="name" placeholder="Họ tên" disabled
                                                        value="{{ $user->name }}">
                                                 @error('name')
                                                 <p class="text-danger"><i>{{ $message }}</i></p>
@@ -55,7 +53,7 @@
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Số điện thoại</label>
-                                                <input type="text" class="form-control" name="phone" placeholder="phone"
+                                                <input type="text" class="form-control" name="phone" placeholder="phone" disabled
                                                        value="{{ $user->phone }}">
                                                 @error('phone')
                                                 <p class="text-danger"><i>{{ $message }}</i></p>
@@ -65,7 +63,7 @@
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Mức quy đổi </label>
-                                                <select class="select form-control" name="rate">
+                                                <select class="select form-control" disabled name="rate">
                                                     <option value="1" {{ $user->rate == 1 ? 'selected' :'' }}>1đ = 25.000đ</option>
                                                     <option value="2" {{ $user->rate == 2 ? 'selected' :'' }}>1đ = 50.000đ</option>
                                                     <option value="3" {{ $user->rate == 3 ? 'selected' :'' }}>1đ = 100.000đ</option>
@@ -73,18 +71,16 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <button type="submit" class="btn btn-info btn-fill pull-right">Thay đổi thông tin</button>
-                                    <div class="clearfix"></div>
-                                </form>
+
                             </div>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <a href="">
-                            <div class="card card-item">
+                            <div class="card card-item" style="background: url('assset/img/img.jpg') no-repeat center">
                                 <div class="card-body">
                                     <i class="fa fa-play-circle"></i>
-                                    <h4>Vào đá gà SV3888</h4>
+                                    <h4>Vào chơi</h4>
                                 </div>
                             </div>
                         </a>

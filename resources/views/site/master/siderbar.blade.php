@@ -45,7 +45,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="">
                     <i class="nc-icon nc-controller-modern"></i>
-                    <p>Vào đá gà SV388</p>
+                    <p>Vào chơi</p>
                 </a>
             </li>
 

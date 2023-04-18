@@ -90,15 +90,43 @@ class TransactionController extends Controller
         if ($request->status){
             $transactions = $transactions->where('status', $request->status);
         }
-        if ($request->type){
-            $transactions = $transactions->where('type', $request->type);
-        }
+
         $totalTrans = $transactions->count();
         $sumTransAmount = $transactions->sum('amount');
 
         $transactions = $transactions->paginate(10);
 
         return view('admin.transaction.withdraw')->with([
+            'transactions' => $transactions,
+            'totalTrans' => $totalTrans,
+            'sumTransAmount' => $sumTransAmount,
+        ]);
+    }
+
+    public function pending(Request $request)
+    {
+        $transactions = Transaction::with('user')->where('status', 0);
+
+        if ($request->user_name){
+            $transactions = $transactions->where('user_name', $request->user_name);
+        }
+        if ($request->time_range){
+            $timeArr = explode('-', $request->time_range);
+            $timeStart = date('Y-m-d 00:00:00', strtotime(trim($timeArr[0])));
+            $timeEnd =  date('Y-m-d 23:59:59', strtotime(trim($timeArr[0])));
+            $transactions = $transactions->where('request_time', '>=', $timeStart)
+                ->where('request_time', '<=', $timeEnd);
+        }
+        if ($request->status){
+            $transactions = $transactions->where('status', $request->status);
+        }
+
+        $totalTrans = $transactions->count();
+        $sumTransAmount = $transactions->sum('amount');
+
+        $transactions = $transactions->paginate(10);
+
+        return view('admin.transaction.pending')->with([
             'transactions' => $transactions,
             'totalTrans' => $totalTrans,
             'sumTransAmount' => $sumTransAmount,
@@ -178,6 +206,7 @@ class TransactionController extends Controller
     {
         $trans = Transaction::where('trans_id', $id)->first();
         $trans->status = $trans->status == 0 ? '1' : 0;
+        $trans->update_end_status_at = new \DateTime();
         $trans->save();
 
         return redirect(route('transaction.index'))->with(['success', "Cập nhật thành công"]);
@@ -187,6 +216,7 @@ class TransactionController extends Controller
     {
         $trans = Transaction::where('trans_id', $id)->first();
         $trans->status = 2;
+        $trans->update_end_status_at = new \DateTime();
         $trans->save();
 
         return redirect(route('transaction.index'))->with(['success', "Cập nhật thành công"]);

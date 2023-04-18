@@ -3,7 +3,7 @@
 @section('content')
     <div class="card mt-2">
         <div class="card-header">
-            <h3 class="card-title">Danh sách lệnh rút</h3>
+            <h3 class="card-title">Danh sách chờ duyệt</h3>
         </div>
         <div class="card-header">
             <form action="{{ route('transaction_topup') }}" method="get">
@@ -24,15 +24,15 @@
                         </div>
 
                     </div>
-                    <div class="form-group col-md-4">
-                        <label for="status">Trạng thái</label>
-                        <select class="select form-control" name="status">
-                            <option value="">-- Tất cả --</option>
-                            <option value="0" {{ request('status') == '0' ? "selected" : ''}}>Chờ duyệt</option>
-                            <option value="1" {{ request('status') == 1 ? "selected" : ''}}>Đã duyệt</option>
-                            <option value="2" {{ request('status') == 2 ? "selected" : ''}}>Đã hủy</option>
-                        </select>
-                    </div>
+{{--                    <div class="form-group col-md-4">--}}
+{{--                        <label for="status">Trạng thái</label>--}}
+{{--                        <select class="select form-control" name="status">--}}
+{{--                            <option value="">-- Tất cả --</option>--}}
+{{--                            <option value="0" {{ request('status') == '0' ? "selected" : ''}}>Chờ duyệt</option>--}}
+{{--                            <option value="1" {{ request('status') == 1 ? "selected" : ''}}>Đã duyệt</option>--}}
+{{--                            <option value="2" {{ request('status') == 2 ? "selected" : ''}}>Đã hủy</option>--}}
+{{--                        </select>--}}
+{{--                    </div>--}}
 
                     <div class="form-group col-md-12">
                         <button type="submit" class="btn btn-primary"> Tìm kiếm</button>
@@ -48,7 +48,7 @@
 
 
         <div class="card-body" style="overflow-y: scroll">
-            <p><i> Tổng giao dịch rút: <b class="text-danger">{{ number_format($totalTrans) }}</b> với số tiền: <b class="text-danger">{{ number_format($sumTransAmount) }}</b></i></p>
+            <p><i> Tổng giao dịch chờ duyệt: <b class="text-danger">{{ number_format($totalTrans) }}</b> với số tiền: <b class="text-danger">{{ number_format($sumTransAmount) }}</b></i></p>
 
             <table class="table table-bordered" style="width: 1300px">
                 <thead>
