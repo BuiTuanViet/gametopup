@@ -24,7 +24,7 @@
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Số tài khoản</label>
                                                 <input type="text" class="form-control" disabled placeholder="Số tài khoản"
-                                                       value="{{ $bankUser->acc_no }}">
+                                                       value="{{ isset($bankUser->acc_no) ? $bankUser->acc_no : '' }}">
                                             </div>
                                         </div>
                                     </div>
@@ -33,7 +33,7 @@
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Ngân hàng</label>
                                                 <input type="text" class="form-control" disabled placeholder=""
-                                                       value="{{ $bankUser->bank->bank_name }} ({{ $bankUser->bank->bank_short_name }})">
+                                                       value="{{ isset($bankUser->bank->bank_name) ? $bankUser->bank->bank_name : '' }} ({{ isset($bankUser->bank->bank_short_name) ? $bankUser->bank->bank_short_name : '' }})">
                                             </div>
                                         </div>
                                     </div>
