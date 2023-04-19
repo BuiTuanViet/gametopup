@@ -140,6 +140,8 @@
             </div>
         </div>
     </div>
+    @include('site.master.livechat')
+
     <style>
         .CaptchaWrap { position: relative; }
         .CaptchaTxtField {

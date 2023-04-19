@@ -24,58 +24,6 @@
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-12">
-                        <div class="card">
-                            <div class="card-header">
-                                <h4 class="card-title">Thông tin tài khoản</h4>
-                            </div>
-                            <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <label>Tên đăng nhập</label>
-                                                <input type="text" class="form-control" disabled placeholder="" disabled
-                                                       value="{{ $user->user_name }}">
-                                                @error('user_name')
-                                                <p class="text-danger"><i>{{ $message }}</i></p>
-                                                @enderror
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <label>Họ Tên</label>
-                                                <input type="text" class="form-control" name="name" placeholder="Họ tên" disabled
-                                                       value="{{ $user->name }}">
-                                                @error('name')
-                                                <p class="text-danger"><i>{{ $message }}</i></p>
-                                                @enderror
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <label for="exampleInputEmail1">Số điện thoại</label>
-                                                <input type="text" class="form-control" name="phone" placeholder="phone" disabled
-                                                       value="{{ $user->phone }}">
-                                                @error('phone')
-                                                <p class="text-danger"><i>{{ $message }}</i></p>
-                                                @enderror
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <label>Mức quy đổi </label>
-                                                <select class="select form-control" disabled name="rate">
-                                                    <option value="1" {{ $user->rate == 1 ? 'selected' :'' }}>1đ = 25.000đ</option>
-                                                    <option value="2" {{ $user->rate == 2 ? 'selected' :'' }}>1đ = 50.000đ</option>
-                                                    <option value="3" {{ $user->rate == 3 ? 'selected' :'' }}>1đ = 100.000đ</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                            </div>
-                        </div>
-                    </div>
                     <div class="col-md-4">
                         <a href="{!! $information['link-choi-game'] !!}">
                             <div class="card card-item" style="background: url('assset/img/img.jpg') no-repeat center">

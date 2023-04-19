@@ -1,5 +1,38 @@
 <div class="sidebar" data-image="../assets/img/sidebar-5.jpg">
     <div class="sidebar-wrapper">
+
+        <div class="logo">
+            <a href="#" class="simple-text">
+                Thông tin tài khoản
+            </a>
+            <ul class="nav" style="padding: 0px 15px">
+                <li>
+                    Tên đăng nhập : <b>{{ \Illuminate\Support\Facades\Auth::user()->user_name }}</b>
+                </li>
+                <li>
+                    <label>Họ Tên :  <b>{{ \Illuminate\Support\Facades\Auth::user()->name }}</b></label>
+                </li>
+                <li>
+                    <label>
+                        Mức quy đổi:
+                        <b>
+                            @switch(\Illuminate\Support\Facades\Auth::user()->rate)
+                                @case(1)
+                                1đ = 25.000đ
+                                @break;
+                                @case(2)
+                                1đ = 50.000đ
+                                @break;
+                                @case(3)
+                                1đ = 100.000đ
+                                @break;
+                            @endswitch
+                        </b>
+                    </label>
+                </li>
+            </ul>
+        </div>
+
         <div class="logo">
             <a href="#" class="simple-text">
                 Quản lý chung
@@ -58,3 +91,8 @@
         </ul>
     </div>
 </div>
+<style>
+    .nav-mobile-menu{
+        display: none !important;
+    }
+</style>

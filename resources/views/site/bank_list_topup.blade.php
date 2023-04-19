@@ -16,7 +16,11 @@
                             <div class="content text-center">
                                 <hr>
                                 <p>
-                                    Để thanh toán giao dịch. Vui lòng chuyển tiền vào tài khoản <span class="text-danger">{{ $trans->acc_no }}</span> - {{ $trans->bank->bank_name }} ({{ $trans->bank->bank_short_name }}) .
+                                    Để thanh toán giao dịch. Vui lòng chuyển tiền vào tài khoản
+                                    <span class="text-danger">{{ $trans->acc_no }} - {{ isset($trans->bankAdmin->acc_name) ? $trans->bankAdmin->acc_name : '' }}</span>
+                                    -
+                                    {{ isset($trans->bank->bank_name) ? $trans->bank->bank_name : '' }}
+                                    ({{ isset($trans->bank->bank_short_name) ? $trans->bank->bank_short_name : '' }}) .
 
                                 </p>
                                 <p>

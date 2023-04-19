@@ -120,21 +120,26 @@
             <tr>
                 <th scope="row">1</th>
                 <td>Số điện thoại</td>
-                <td>021241545</td>
+                <td>{{$information['so-dien-thoai']}}</td>
             </tr>
             <tr>
                 <th scope="row">2</th>
                 <td>Telegram</td>
-                <td><a href="#">link</a></td>
+                <td><a href="{{$information['telegram']}}">{{$information['telegram']}}</a></td>
             </tr>
             <tr>
                 <th scope="row">3</th>
                 <td>Chat ngay cho chúng tôi</td>
-                <td><a href="#">link</a></td>
+                <td>CHAT</td>
             </tr>
             </tbody>
         </table>
+        <div class="text-center">
+            <a href="{{ route('get_login') }}" class="btn btn-info">Về trang đăng nhập</a>
+        </div>
     </div>
 </section>
+@include('site.master.livechat')
+
 </body>
 </html>

@@ -17,4 +17,8 @@ class Transaction extends Model
     public function bank(){
         return $this->hasOne(Bank::class, 'bank_no', 'bank_no');
     }
+
+    public function bankAdmin(){
+        return $this->hasOne(BankAdmin::class, 'acc_no', 'acc_no');
+    }
 }

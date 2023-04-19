@@ -72,5 +72,7 @@
         </div>
     </div>
 </section>
+@include('site.master.livechat')
+
 </body>
 </html>
