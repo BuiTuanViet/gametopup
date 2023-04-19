@@ -93,7 +93,7 @@ class TransactionController extends Controller
         ];
 
         $save = Transaction::insert($data);
-        return redirect()->back()->with([
+        return redirect()->route('transactions')->with([
             'success' => 'Yêu cầu rút tiền đã được ghi nhận.'
         ]);
     }

@@ -21,7 +21,7 @@
                     <div class="col-md-6 mb-4">
                         <div class="form-outline">
                             <label class="form-label" for="userName">Tên đăng nhập</label>
-                            <input type="text" id="userName" class="form-control" disabled value="{{  $user->user_name }}">
+                            <input type="text" id="userName" class="form-control" name="user_name" value="{{  $user->user_name }}">
                         </div>
                     </div>
                     <div class="col-md-6 mb-4">

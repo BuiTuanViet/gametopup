@@ -20,7 +20,7 @@
                                             <div class="form-group">
                                                 <label>Tên tài khoản</label>
                                                 <input type="text" class="form-control" name="acc_name" placeholder="Tên tài khoản"
-                                                       value="{{ isset($bankUser->acc_name) ? $bankUser->acc_name : '' }}">
+                                                       value="{{ isset($bankUser->acc_name) ? $bankUser->acc_name : \Illuminate\Support\Facades\Auth::user()->name }}">
                                                 @error('acc_name')
                                                 <p class="text-danger"><i>{{ $message }}</i></p>
                                                 @enderror
