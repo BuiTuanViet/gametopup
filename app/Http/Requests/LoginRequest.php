@@ -26,7 +26,7 @@ class LoginRequest extends FormRequest
         return [
             'user_name' => [
                 'required',
-                'regex:/^[a-zA-Z0-9\s]{1,15}$/',
+                'regex:/^[a-z0-9\s]{1,15}$/',
             ],
             'password' => [
                 'required',
@@ -39,7 +39,7 @@ class LoginRequest extends FormRequest
     {
         return [
             'user_name.required' => "Tên đăng nhập không được để trống.",
-            'user_name.regex' => "Tên đăng nhập không được chứa ký tự đặc biệt.",
+            'user_name.regex' => "Tên đăng nhập không hợp lệ.",
             'password.required' => "Mật khẩu không được để trống.",
             'password.regex' => "Mật khẩu không chính xác",
         ];

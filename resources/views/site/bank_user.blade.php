@@ -2,7 +2,8 @@
 
 @section('content')
     <div class="main-panel">
-        <!-- End Navbar -->
+    @include('site.master.header')
+    <!-- End Navbar -->
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
