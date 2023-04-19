@@ -2,8 +2,8 @@
     <div class="sidebar-wrapper">
 
         <div class="logo">
-            <a href="#" class="simple-text">
-                Thông tin tài khoản
+            <a href="/" class="simple-text">
+                <img src="{{ asset('assset/img/logo.jpg') }}" width="150px" alt="">
             </a>
             <ul class="nav" style="padding: 0px 15px">
                 <li>

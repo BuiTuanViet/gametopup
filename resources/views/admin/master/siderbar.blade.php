@@ -30,6 +30,14 @@
               </p>
             </a>
           </li>
+        <li class="nav-item has-treeview">
+            <a href="{{ route('group.index') }}" class="nav-link {{ Request::is('group') ? 'active' : '' }} ">
+                <i class="nav-icon fas fa-users"></i>
+                <p>
+                    Nhóm
+                </p>
+            </a>
+        </li>
 
           <li class="nav-item has-treeview">
             <a href="{{ route('transaction.index') }}" class="nav-link {{ Request::is('transaction') ? '' : '' }} ">
