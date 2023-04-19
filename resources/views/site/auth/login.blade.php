@@ -37,7 +37,7 @@
             <div class="col-12 col-lg-9 col-xl-7">
                 <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
                     <div class="card-body text-center">
-                        <img src="{{ asset('assset/img/logo.jpg') }}" width="250px" alt="">
+                        <img src="{{ asset('assset/img/logo1.png') }}" width="250px" alt="">
                     </div>
                     <div class="card-body p-4 p-md-5">
                         <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Đăng nhập </h3>
