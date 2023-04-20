@@ -12,7 +12,13 @@
                             <div class="card-header">
                                 <h4 class="card-title">Thông tin tài khoản thanh toán</h4>
                             </div>
+
                             <div class="card-body">
+                                @if(session()->has('message'))
+                                    <div class="alert alert-success">
+                                        {{ session()->get('message') }}
+                                    </div>
+                                @endif
                                 <form method="post" action="{{ route('update_bank_account') }}">
                                     @csrf
                                     <div class="row">

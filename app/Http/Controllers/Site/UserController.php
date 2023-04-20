@@ -62,6 +62,6 @@ class UserController extends Controller
             ];
             BankUser::insertGetId($data);
         }
-        return redirect()->back();
+        return redirect()->back()->with('message', 'Cập nhật thành công!');
     }
 }
