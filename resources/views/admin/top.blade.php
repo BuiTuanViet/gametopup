@@ -3,15 +3,15 @@
     <div class="card  p-3">
         <div class="row">
             <div class="col-md-4 text-center">
-                <label style="">Tài khoản chưa kích hoạt <span
+                <label style=""><a href="{{ route('user.index') }}">Tài khoản chưa kích hoạt</a> <span
                         class="badge badge-danger">{{ $userNeedActive }}</span></label>
             </div>
             <div class="col-md-4 text-center">
-                <label style="display: inline-block">Duyệt nạp <span
+                <label style="display: inline-block"><a href="{{ route('transaction_topup') }}">Duyệt nạp</a> <span
                         class="badge badge-danger">{{ $transTopupNeedActive }}</span></label>
             </div>
             <div class="col-md-4 text-center">
-                <label style="display: inline-block">Duyệt rút <span
+                <label style="display: inline-block"><a href="{{ route('transaction_withdraw') }}">Duyệt rút</a> <span
                         class="badge badge-danger">{{ $transWithdrawNeedActive }}</span></label>
             </div>
         </div>

@@ -57,7 +57,7 @@ class BankUserController extends Controller
     {
         $bankUser = new BankUser();
         $checkBankUserExist =  BankUser::find($request->user_id);
-        if (!$checkBankUserExist){
+        if ($checkBankUserExist){
             return redirect()->back()->withErrors('Người dùng này đã được cấu hình tài khoản');
         }
         $data = [
