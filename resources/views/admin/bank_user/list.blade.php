@@ -50,7 +50,7 @@
                     <td>
                         {{ $item->acc_no }}
                     </td>
-                    <td>{{ $item->user->user_name }}</td>
+                    <td>{{ isset($item->user->user_name) ? $item->user->user_name : '' }}</td>
                     <td>{{ isset($item->bank->bank_short_name) ? $item->bank->bank_short_name : '' }}</td>
                     <td>
                         {{ $item->acc_name }}
