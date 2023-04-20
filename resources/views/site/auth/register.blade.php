@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="{{ asset('assset/img/logo1.png') }}">
     <title>Đăng ký</title>
     <link href="{{ asset('assset/css/bootstrap.min.css') }}" rel="stylesheet" id="bootstrap-css">
     <script src="{{ asset('assset/js/jquery-1.11.1.min.js') }}"></script>
