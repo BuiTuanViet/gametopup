@@ -34,7 +34,7 @@ class TransactionController extends Controller
         if ($request->type){
             $transactions = $transactions->where('type', $request->type);
         }
-        $transactions = $transactions->paginate(10);
+        $transactions = $transactions->orderBy('request_time', 'DESC')->paginate(10);
 
         return view('admin.transaction.index')->with([
             'transactions' => $transactions
