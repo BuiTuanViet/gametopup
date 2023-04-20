@@ -40,7 +40,7 @@
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Số tiền</label>
                                                 <input type="number" class="form-control" name="amount"
-                                                       placeholder="Số tiền nạp"
+                                                       placeholder="Ghi đầy đủ số 0"
                                                        value="{{ old('amount') }}">
                                                 @error('amount')
                                                 <p class="text-danger"><i>{{ $message }}</i></p>
@@ -53,7 +53,7 @@
                                             <div class="form-group">
                                                 <label for="memo">Nội dung chuyển tiền</label>
                                                 <input type="text" class="form-control" name="memo"
-                                                       placeholder="Nội dung chuyển tiền"
+                                                       placeholder="Ghi tên đăng nhập"
                                                        value="{{ old('memo') }}">
                                                 @error('memo')
                                                 <p class="text-danger"><i>{{ $message }}</i></p>
@@ -100,7 +100,10 @@
                     </div>
                     <div class="col-md-12">
                         <div class="card">
-                            <div class="card-body">
+                        <div class="card-header text-center">
+                            <h3>Hướng dẫn</h3>
+                        </div>
+                        <div class="card-body">
                         <p>1. Thời gian nạp tiền từ 09:00 - 22:00 hàng ngày</p>
 
                         <p>2. Nạp rút thấp nhất 20đ cho 1 lần nạp</p>

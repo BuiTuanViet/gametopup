@@ -128,6 +128,11 @@
                 <td><a href="{{$information['telegram']}}">{{$information['telegram']}}</a></td>
             </tr>
             <tr>
+                <th scope="row">2</th>
+                <td>Zalo</td>
+                <td><a href="https://zalo.me/{{$information['zalo']}}">{{$information['zalo']}}</a></td>
+            </tr>
+            <tr>
                 <th scope="row">3</th>
                 <td>Chat ngay cho chúng tôi</td>
                 <td>CHAT</td>

@@ -159,11 +159,12 @@
             text-align:center;
             margin-top: 15px;
             padding: 0px 0;
-            width: 300px;
+            width: 200px;
             overflow: hidden;
         }
 
         .capcode {
+            width: 100%;
             font-size: 46px;
             display: block;
             -moz-user-select: none;
@@ -182,10 +183,12 @@
             background-size : 100%;
             width: 32px;
             height: 32px;
-            border: 0px; outline none;
+            border: 0px;
+            outline: none;
             position: absolute;
-            bottom: 30px;
-            left : 310px;
+            bottom: 15%;
+            left: 90%;
+            background-color: #fff;
             outline: none;
             cursor: pointer; /**/
         }
