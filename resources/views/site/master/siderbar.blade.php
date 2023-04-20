@@ -76,7 +76,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="">
+                <a class="nav-link" href="{!! isset($information['link-choi-game']) ? $information['link-choi-game'] : '' !!}">
                     <i class="nc-icon nc-controller-modern"></i>
                     <p>Vào chơi</p>
                 </a>

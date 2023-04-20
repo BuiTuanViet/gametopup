@@ -42,13 +42,28 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-6 col-md-6 text-center">
-                        <input type="text" class="knob" value="{{ $totalUser }}" data-width="90" data-height="90" data-fgColor="#3c8dbc">
-                        <div class="knob-label">Tổng số người dùng</div>
+                        <div class="small-box bg-info">
+                            <div class="inner">
+                                <h3>{{ $totalUser }}</h3>
+                                <p>Tổng số người dùng</p>
+                            </div>
+                            <div class="icon">
+                                <i class="fa fa-users"></i>
+                            </div>
+                            <a href="{{ route('user.index') }}" class="small-box-footer">Chi tiết <i class="fas fa-arrow-circle-right"></i></a>
+                        </div>
                     </div>
-
                     <div class="col-6 col-md-6 text-center">
-                        <input type="text" class="knob" value="{{ $countUserToday }}" data-width="90" data-height="90" data-fgColor="#3c8dbc">
-                        <div class="knob-label">Số người đăng ký trong ngày</div>
+                        <div class="small-box bg-success">
+                            <div class="inner">
+                                <h3>{{ $countUserToday }}</h3>
+                                <p>Số người đăng ký trong ngày</p>
+                            </div>
+                            <div class="icon">
+                                <i class="fa fa-users"></i>
+                            </div>
+                            <a href="{{ route('user.index') }}" class="small-box-footer">Chi tiết <i class="fas fa-arrow-circle-right"></i></a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -72,13 +87,13 @@
             datasets: [
                 {
                     data: [
-                        userNeedActive,
-                        userActive
+                        userActive,
+                        userNeedActive
                     ],
                     backgroundColor : [
-                        '#f56954',
                         '#00a65a',
-                       ],
+                        '#f56954',
+                    ],
                 }
             ]
         }

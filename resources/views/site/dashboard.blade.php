@@ -25,7 +25,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-4">
-                        <a href="{!! $information['link-choi-game'] !!}">
+                        <a href="{!! isset($information['link-choi-game']) ? $information['link-choi-game'] : '' !!}">
                             <div class="card card-item" style="background: url('assset/img/img.jpg') no-repeat center">
                                 <div class="card-body">
                                     <i class="fa fa-play-circle"></i>
