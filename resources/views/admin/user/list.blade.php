@@ -51,7 +51,7 @@
                     <th>User Name</th>
                     <th>Mật khẩu</th>
                     <th>Tên</th>
-                    <th>Sale phụ trách</th>
+                    <th>Nhóm</th>
                     <th>Số điện thoại</th>
                     <th>Mức quy đổi</th>
                     <th>Trạng thái</th>
@@ -68,10 +68,10 @@
                     <td>{{ \Illuminate\Support\Facades\Crypt::decrypt($user->password) }}</td>
                     <td>{{ $user->name }}</td>
                     <td>
-                        @if(isset($user->sale->name))
-                            <span class="badge badge-success">{{ $user->sale->name }}</span>
+                        @if(isset($user->group->group_name))
+                            <span class="badge badge-success">{{ $user->group->group_name }}</span>
                         @else
-                            <span class="badge badge-warning">Chưa gán sale</span>
+                            <span class="badge badge-warning">Chưa được phân nhóm</span>
                         @endif
                        </td>
                     <td>

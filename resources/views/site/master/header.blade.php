@@ -6,8 +6,10 @@
             <span class="navbar-toggler-bar burger-lines"></span>
             <span class="navbar-toggler-bar burger-lines"></span>
         </button>
+        <div class="logo" style="position: absolute;left: 40%;">
+            <a href="/"><img src="{{ asset('assset/img/logo1.png') }}" width="100px" alt=""></a>
+        </div>
         <div class="collapse navbar-collapse justify-content-end" id="navigation">
-
         </div>
     </div>
 </nav>
