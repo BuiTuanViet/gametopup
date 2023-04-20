@@ -36,6 +36,7 @@ class RevenueController extends Controller
         if ($request->group_id){
             $trans = $trans->whereIn('sale_id', $arrUser);
         }
+        $trans = $trans->where('status', 1);
         $totalTopupAll = $trans->where('type', 0)->count();
         $sumTopupAll = $trans->where('type', 0)->sum('amount');
         $totalWithdrawAll = $trans->where('type', 1)->count();
@@ -44,7 +45,7 @@ class RevenueController extends Controller
 //        $trans = $trans->get();
 
         foreach ($users as $item){
-            $transactions = Transaction::where('sale_id', $item->id);
+            $transactions = Transaction::where('sale_id', $item->id)->where('status', 1);
 
             if ($request->time_range){
                 $timeArr = explode('-', $request->time_range);

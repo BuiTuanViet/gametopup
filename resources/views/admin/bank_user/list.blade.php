@@ -37,7 +37,7 @@
                 <tr>
                     <th style="width: 10px">ID</th>
                     <th>Số tài khoản</th>
-                    <th>Họ tên</th>
+                    <th>User Name</th>
                     <th>Ngân hàng</th>
                     <th>Tên tài khoản</th>
                     <th style="width: 150px">Thao tác</th>
