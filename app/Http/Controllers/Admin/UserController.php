@@ -23,10 +23,10 @@ class UserController extends Controller
         if ($request->user_name){
             $users = $users->where('user_name', $request->user_name);
         }
-        if ($request->status){
+        if (isset($request->status)){
             $users = $users->where('status', $request->status);
         }
-        if ($request->type){
+        if (isset($request->type)){
             $users = $users->where('type', $request->type);
         }
 

@@ -53,7 +53,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Mức quy đổi </label>
-                                                <select class="select form-control" name="rate">
+                                                <select class="select form-control select2" name="rate">
                                                     <option value="1" {{ $user->rate == 1 ? 'selected' :'' }}>1đ = 25.000đ</option>
                                                     <option value="2" {{ $user->rate == 2 ? 'selected' :'' }}>1đ = 50.000đ</option>
                                                     <option value="3" {{ $user->rate == 3 ? 'selected' :'' }}>1đ = 100.000đ</option>
@@ -104,7 +104,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label> Chọn ngân hàng </label>
-                                                <select class="select form-control" name="bank_no">
+                                                <select class="select form-control select2" name="bank_no">
                                                     <option value="">Tất cả</option>
                                                     @foreach($banks as $bank)
                                                         <option value="{{ $bank->bank_no }}" {{ isset($bankUser->bank_no) && $bankUser->bank_no == $bank->bank_no ? "selected" : ''}}>

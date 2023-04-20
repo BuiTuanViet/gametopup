@@ -9,9 +9,9 @@
         <div class="card-header">
             <form action="{{ route('bank-user.index') }}" method="get">
                 <div class="row">
-                    <div class="form-group col-md-3">
+                    <div class="form-group col-md-4">
                         <label for="type">Tài khoản</label>
-                        <select class="select form-control" name="user_id">
+                        <select class="select form-control select2" name="user_id">
                             <option value="">-- Tất cả --</option>
                             @foreach($users as $user)
                             <option value="{{ $user->id }}" {{ request('user_id') == $user->id ? "selected" : ''}}>{{ $user->user_name }} ({{ $user->name }})</option>

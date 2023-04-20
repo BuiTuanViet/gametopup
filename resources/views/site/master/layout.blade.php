@@ -13,6 +13,8 @@
     <!-- CSS Files -->
     <link href="{{ asset('dashboard/light-bootstrap-dashboard/assets/css/bootstrap.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('dashboard/light-bootstrap-dashboard/assets/css/light-bootstrap-dashboard.css') }}" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ asset('admin-lte/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin-lte/select2-bootstrap4.min.css') }}">
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="{{ asset('dashboard/light-bootstrap-dashboard/assets/css/demo.css') }}" rel="stylesheet" />
     <style>
@@ -56,7 +58,15 @@
 <script src="{{ asset('dashboard/light-bootstrap-dashboard/assets/js/plugins/bootstrap-notify.js') }}"></script>
 <!-- Control Center for Light Bootstrap Dashboard: scripts for the example pages etc -->
 <script src="{{ asset('dashboard/light-bootstrap-dashboard/assets/js/light-bootstrap-dashboard.js?v=2.0.0') }} " type="text/javascript"></script>
+
+<script src=" {{ asset('admin-lte/select2.full.min.js') }} "></script>
+
 <!-- Light Bootstrap Dashboard DEMO methods, don't include it in your project! -->
 <script src="{{ asset('dashboard/light-bootstrap-dashboard/assets/js/demo.js') }}"></script>
 
+<script>
+    $(function () {
+        $('.select2').select2({ height: '50px', dropdownCssClass: "bigdrop" })
+    })
+</script>
 </html>

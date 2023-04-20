@@ -9,6 +9,8 @@
   <link rel="stylesheet" href="{{ asset('fontawesome-free-5-web/css/all.css') }}">
   <!-- Ionicons -->
   <link rel="stylesheet" href="{{ asset('admin-lte/ionicons.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('admin-lte/select2.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('admin-lte/select2-bootstrap4.min.css') }}">
 
   <link rel="stylesheet" href="{{ asset('admin-lte/summernote-bs4.css') }}">
   <!-- Tempusdominus Bbootstrap 4 -->
@@ -71,6 +73,8 @@
 <script src=" {{ asset('admin-lte/summernote-bs4.min.js') }} "></script>
 <!-- overlayScrollbars -->
 <script src=" {{ asset('admin-lte/jquery.overlayScrollbars.min.js') }} "></script>
+
+<script src=" {{ asset('admin-lte/select2.full.min.js') }} "></script>
 <!-- AdminLTE App -->
 <script src=" {{ asset('admin-lte/adminlte.js') }} "></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
@@ -81,6 +85,9 @@
 @yield('js')
 
 <script>
+    $(function () {
+        $('.select2').select2()
+    })
     function deleteItem(e) {
         let url = $(e).attr('url');
         $('#form-delete').attr('action', url);

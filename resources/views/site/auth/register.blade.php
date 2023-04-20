@@ -109,7 +109,7 @@
                                 <div class="col-md-12 mb-4">
                                     <div class="form-outline">
                                         <label class="form-label" for="name">Mức quy đổi </label><span>*</span>
-                                        <select class="select form-control" name="rate">
+                                        <select class="select form-control select2" name="rate">
                                             <option value="1" @if (old('rate') && old('rate') == 1 )selected @endif>1đ = 25.000đ</option>
                                             <option value="2" @if (old('rate') && old('rate') == 2 )selected @endif>1đ = 50.000đ</option>
                                             <option value="3" @if (old('rate') && old('rate') == 3 )selected @endif>1đ = 100.000đ</option>

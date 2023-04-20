@@ -17,7 +17,6 @@ class TransactionController extends Controller
     public function index(Request $request)
     {
         $transactions = Transaction::with('user');
-
         if ($request->user_name){
             $transactions = $transactions->where('user_name', $request->user_name);
         }
@@ -28,10 +27,10 @@ class TransactionController extends Controller
             $transactions = $transactions->where('request_time', '>=', $timeStart)
                 ->where('request_time', '<=', $timeEnd);
         }
-        if ($request->status){
+        if (isset($request->status)){
             $transactions = $transactions->where('status', $request->status);
         }
-        if ($request->type){
+        if (isset($request->type)){
             $transactions = $transactions->where('type', $request->type);
         }
         $transactions = $transactions->orderBy('request_time', 'DESC')->paginate(10);
@@ -43,7 +42,7 @@ class TransactionController extends Controller
 
     public function topup(Request $request)
     {
-        $transactions = Transaction::with('user')->where('type', 0);
+        $transactions = Transaction::with('user')->where('type', 0)->where('status', "!=", 2);
 
         if ($request->user_name){
             $transactions = $transactions->where('user_name', $request->user_name);
@@ -55,10 +54,10 @@ class TransactionController extends Controller
             $transactions = $transactions->where('request_time', '>=', $timeStart)
                 ->where('request_time', '<=', $timeEnd);
         }
-        if ($request->status){
+        if (isset($request->status)){
             $transactions = $transactions->where('status', $request->status);
         }
-        if ($request->type){
+        if (isset($request->type)){
             $transactions = $transactions->where('type', $request->type);
         }
         $totalTrans = $transactions->count();
@@ -75,7 +74,7 @@ class TransactionController extends Controller
 
     public function withdraw(Request $request)
     {
-        $transactions = Transaction::with('user')->where('type', 1);
+        $transactions = Transaction::with('user')->where('type', 1)->where('status', "!=", 2);
 
         if ($request->user_name){
             $transactions = $transactions->where('user_name', $request->user_name);
@@ -87,7 +86,7 @@ class TransactionController extends Controller
             $transactions = $transactions->where('request_time', '>=', $timeStart)
                 ->where('request_time', '<=', $timeEnd);
         }
-        if ($request->status){
+        if (isset($request->status)){
             $transactions = $transactions->where('status', $request->status);
         }
 
@@ -117,7 +116,7 @@ class TransactionController extends Controller
             $transactions = $transactions->where('request_time', '>=', $timeStart)
                 ->where('request_time', '<=', $timeEnd);
         }
-        if ($request->status){
+        if (isset($request->status)){
             $transactions = $transactions->where('status', $request->status);
         }
 

@@ -16,7 +16,7 @@
                                 <form method="post" action="{{ route('update_bank_account') }}">
                                     @csrf
                                     <div class="row">
-                                        <div class="col-md-4">
+                                        <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Tên tài khoản</label>
                                                 <input type="text" class="form-control" name="acc_name" placeholder="Tên tài khoản"
@@ -26,7 +26,9 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
+                                        </div>
+                                        <div class="row">
+                                        <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Số tài khoản</label>
                                                 <input type="text" class="form-control" name="acc_no" placeholder="Số tài khoản"
@@ -36,12 +38,12 @@
                                                 @enderror
                                             </div>
                                         </div>
-
-
-                                        <div class="col-md-4">
+                                        </div>
+                                        <div class="row">
+                                        <div class="col-md-12">
                                             <div class="form-group">
                                                 <label> Chọn ngân hàng </label>
-                                                <select class="select form-control" name="bank_no">
+                                                <select class="select form-control select2" name="bank_no">
                                                     <option value="">Tất cả</option>
                                                     @foreach($banks as $bank)
                                                         <option value="{{ $bank->bank_no }}" {{ isset($bankUser->bank_no) && $bankUser->bank_no == $bank->bank_no ? "selected" : ''}}>

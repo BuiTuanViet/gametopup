@@ -33,7 +33,7 @@
                         <div class="col-md-6 mb-4">
                             <div class="form-outline">
                                 <label class="form-label" for="bank_no">Ngân hàng</label>
-                                <select name="bank_no" class="form-control"  id="bank_no">
+                                <select name="bank_no" class="form-control select2"  id="bank_no">
                                     <option value="">Vui lòng chọn</option>
                                     @foreach($banks as $bank)
                                         <option value="{{ $bank->bank_no }}" {{ old('bank_no') == $bank->bank_no ? 'selected' : '' }}>

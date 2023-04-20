@@ -20,7 +20,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label> Chọn ngân hàng </label>
-                                                <select class="select form-control" name="acc_no">
+                                                <select class="select form-control select2" name="acc_no">
                                                     <option value="">Tất cả</option>
                                                     @foreach($banks as $bank)
                                                         <option
