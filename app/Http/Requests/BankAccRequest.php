@@ -26,7 +26,7 @@ class BankAccRequest extends FormRequest
         return [
             'acc_name' => [
                 'required',
-                'regex:/^[A-Z ]+$/'
+                'regex:/^[A-Za-z ]+$/'
             ],
             'acc_no' => 'required|numeric',
             'bank_no' => 'required',
