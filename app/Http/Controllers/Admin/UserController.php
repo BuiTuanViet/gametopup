@@ -119,8 +119,9 @@ class UserController extends Controller
     public function update(UserUpdateRequest $request, $id)
     {
         $user = User::find($id);
-        $user->name = $request->user_name;
+        $user->user_name = $request->user_name;
         $user->name = $request->name;
+        $user->password = Crypt::encrypt($request->password);
         $user->phone = $request->phone;
         $user->rate = $request->rate;
         $user->role = $request->role;
