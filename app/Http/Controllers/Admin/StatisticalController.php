@@ -20,6 +20,8 @@ class StatisticalController extends Controller
         $transactionConfirm = 0;
         $transactionDeposit = 0;
         $transactionWithdraw = 0;
+        $transTopupNeedActive = 0;
+        $transWithdrawNeedActive = 0;
 
         foreach ($users as $user){
             if ($user->status == 0){
@@ -32,6 +34,11 @@ class StatisticalController extends Controller
         foreach ($transactions as $trans){
             if ($trans->status == 0){
                 $transactionNeedConfirm +=1;
+                if ($trans->type == 0){
+                    $transTopupNeedActive +=1;
+                }elseif($trans->type == 1){
+                    $transWithdrawNeedActive +=1;
+                }
             }
             if ($trans->status == 1){
                 $transactionConfirm +=1;
@@ -53,6 +60,8 @@ class StatisticalController extends Controller
             'transactionConfirm' => $transactionConfirm,
             'transactionDeposit' => $transactionDeposit,
             'transactionWithdraw' => $transactionWithdraw,
+            'transTopupNeedActive' => $transTopupNeedActive,
+            'transWithdrawNeedActive' => $transWithdrawNeedActive,
         ]);
     }
 }

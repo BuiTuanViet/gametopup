@@ -73,17 +73,19 @@
                         <td>{{ $item->trans_id }}</td>
                         <td>{{ number_format($item->amount) }}</td>
                         <td>
-                            @switch($item->user->rate)
-                                @case(1)
-                                1đ = 25.000đ
-                                @break
-                                @case(2)
-                                1đ = 50.000đ
-                                @break
-                                @case(3)
-                                1đ = 100.000đ
-                                @break
-                            @endswitch
+                            @if(isset($item->user->rate))
+                                @switch($item->user->rate)
+                                    @case(1)
+                                    1đ = 25.000đ
+                                    @break
+                                    @case(2)
+                                    1đ = 50.000đ
+                                    @break
+                                    @case(3)
+                                    1đ = 100.000đ
+                                    @break
+                                @endswitch
+                            @endif
                         </td>
                         <td>{{ $item->promotion_code }}</td>
                         <td>

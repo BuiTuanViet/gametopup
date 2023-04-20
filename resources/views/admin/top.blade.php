@@ -1,5 +1,21 @@
 @extends('admin.master.layout')
 @section('content')
+    <div class="card  p-3">
+        <div class="row">
+            <div class="col-md-4 text-center">
+                <label style="">Tài khoản chưa kích hoạt <span
+                        class="badge badge-danger">{{ $userNeedActive }}</span></label>
+            </div>
+            <div class="col-md-4 text-center">
+                <label style="display: inline-block">Duyệt nạp <span
+                        class="badge badge-danger">{{ $transTopupNeedActive }}</span></label>
+            </div>
+            <div class="col-md-4 text-center">
+                <label style="display: inline-block">Duyệt rút <span
+                        class="badge badge-danger">{{ $transWithdrawNeedActive }}</span></label>
+            </div>
+        </div>
+    </div>
     <div class="row">
         <div class="col-md-6">
             <div class="card card-danger">
@@ -15,7 +31,8 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <canvas id="chartUser" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                    <canvas id="chartUser"
+                            style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
                 </div>
             </div>
         </div>
@@ -34,7 +51,8 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <canvas id="chartTransaction" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                    <canvas id="chartTransaction"
+                            style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
                 </div>
             </div>
         </div>
@@ -50,7 +68,8 @@
                             <div class="icon">
                                 <i class="fa fa-users"></i>
                             </div>
-                            <a href="{{ route('user.index') }}" class="small-box-footer">Chi tiết <i class="fas fa-arrow-circle-right"></i></a>
+                            <a href="{{ route('user.index') }}" class="small-box-footer">Chi tiết <i
+                                    class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                     <div class="col-6 col-md-6 text-center">
@@ -62,7 +81,8 @@
                             <div class="icon">
                                 <i class="fa fa-users"></i>
                             </div>
-                            <a href="{{ route('user.index') }}" class="small-box-footer">Chi tiết <i class="fas fa-arrow-circle-right"></i></a>
+                            <a href="{{ route('user.index') }}" class="small-box-footer">Chi tiết <i
+                                    class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -79,7 +99,7 @@
         var userNeedActive = "{{$userNeedActive}}"
         var userActive = "{{$userActive}}"
         var donutChartCanvas = $('#chartUser').get(0).getContext('2d')
-        var chartUser        = {
+        var chartUser = {
             labels: [
                 'Đã kích hoạt',
                 'Chưa kích hoạt',
@@ -90,16 +110,16 @@
                         userActive,
                         userNeedActive
                     ],
-                    backgroundColor : [
+                    backgroundColor: [
                         '#00a65a',
                         '#f56954',
                     ],
                 }
             ]
         }
-        var donutUserOptions     = {
-            maintainAspectRatio : false,
-            responsive : true,
+        var donutUserOptions = {
+            maintainAspectRatio: false,
+            responsive: true,
         }
         //Create pie or douhnut chart
         // You can switch between pie and douhnut using the method below.
@@ -121,7 +141,7 @@
         var transactionWithdraw = '{{ $transactionWithdraw }}';
 
         var donutTransactionChartCanvas = $('#chartTransaction').get(0).getContext('2d')
-        var chartTransaction        = {
+        var chartTransaction = {
             labels: [
                 'Giao dịch cần duyệt',
                 'Giao dịch đã duyệt',
@@ -136,7 +156,7 @@
                         transactionDeposit,
                         transactionWithdraw,
                     ],
-                    backgroundColor : [
+                    backgroundColor: [
                         '#f56954',
                         '#d6df51',
                         '#2c8fb5',
@@ -145,9 +165,9 @@
                 }
             ]
         }
-        var donutTransactionOptions     = {
-            maintainAspectRatio : false,
-            responsive : true,
+        var donutTransactionOptions = {
+            maintainAspectRatio: false,
+            responsive: true,
         }
         //Create pie or douhnut chart
         // You can switch between pie and douhnut using the method below.
@@ -158,81 +178,96 @@
         })
 
     </script>
-            <script>
-                $(function () {
-                    /* jQueryKnob */
+    <script>
+        $(function () {
+            /* jQueryKnob */
 
-                    $('.knob').knob({
-                        /*change : function (value) {
-                         //console.log("change : " + value);
-                         },
-                         release : function (value) {
-                         console.log("release : " + value);
-                         },
-                         cancel : function () {
-                         console.log("cancel : " + this.value);
-                         },*/
-                        draw: function () {
+            $('.knob').knob({
+                /*change : function (value) {
+                 //console.log("change : " + value);
+                 },
+                 release : function (value) {
+                 console.log("release : " + value);
+                 },
+                 cancel : function () {
+                 console.log("cancel : " + this.value);
+                 },*/
+                draw: function () {
 
-                            // "tron" case
-                            if (this.$.data('skin') == 'tron') {
+                    // "tron" case
+                    if (this.$.data('skin') == 'tron') {
 
-                                var a   = this.angle(this.cv)  // Angle
-                                    ,
-                                    sa  = this.startAngle          // Previous start angle
-                                    ,
-                                    sat = this.startAngle         // Start angle
-                                    ,
-                                    ea                            // Previous end angle
-                                    ,
-                                    eat = sat + a                 // End angle
-                                    ,
-                                    r   = true
+                        var a = this.angle(this.cv)  // Angle
+                            ,
+                            sa = this.startAngle          // Previous start angle
+                            ,
+                            sat = this.startAngle         // Start angle
+                            ,
+                            ea                            // Previous end angle
+                            ,
+                            eat = sat + a                 // End angle
+                            ,
+                            r = true
 
-                                this.g.lineWidth = this.lineWidth
+                        this.g.lineWidth = this.lineWidth
 
-                                this.o.cursor
-                                && (sat = eat - 0.3)
-                                && (eat = eat + 0.3)
+                        this.o.cursor
+                        && (sat = eat - 0.3)
+                        && (eat = eat + 0.3)
 
-                                if (this.o.displayPrevious) {
-                                    ea = this.startAngle + this.angle(this.value)
-                                    this.o.cursor
-                                    && (sa = ea - 0.3)
-                                    && (ea = ea + 0.3)
-                                    this.g.beginPath()
-                                    this.g.strokeStyle = this.previousColor
-                                    this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, sa, ea, false)
-                                    this.g.stroke()
-                                }
-
-                                this.g.beginPath()
-                                this.g.strokeStyle = r ? this.o.fgColor : this.fgColor
-                                this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, sat, eat, false)
-                                this.g.stroke()
-
-                                this.g.lineWidth = 2
-                                this.g.beginPath()
-                                this.g.strokeStyle = this.o.fgColor
-                                this.g.arc(this.xy, this.xy, this.radius - this.lineWidth + 1 + this.lineWidth * 2 / 3, 0, 2 * Math.PI, false)
-                                this.g.stroke()
-
-                                return false
-                            }
+                        if (this.o.displayPrevious) {
+                            ea = this.startAngle + this.angle(this.value)
+                            this.o.cursor
+                            && (sa = ea - 0.3)
+                            && (ea = ea + 0.3)
+                            this.g.beginPath()
+                            this.g.strokeStyle = this.previousColor
+                            this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, sa, ea, false)
+                            this.g.stroke()
                         }
-                    })
-                    /* END JQUERY KNOB */
 
-                    //INITIALIZE SPARKLINE CHARTS
-                    var sparkline1 = new Sparkline($('#sparkline-1')[0], { width: 240, height: 70, lineColor: '#92c1dc', endColor: '#92c1dc' })
-                    var sparkline2 = new Sparkline($('#sparkline-2')[0], { width: 240, height: 70, lineColor: '#f56954', endColor: '#f56954' })
-                    var sparkline3 = new Sparkline($('#sparkline-3')[0], { width: 240, height: 70, lineColor: '#3af221', endColor: '#3af221' })
+                        this.g.beginPath()
+                        this.g.strokeStyle = r ? this.o.fgColor : this.fgColor
+                        this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, sat, eat, false)
+                        this.g.stroke()
 
-                    sparkline1.draw([1000, 1200, 920, 927, 931, 1027, 819, 930, 1021])
-                    sparkline2.draw([515, 519, 520, 522, 652, 810, 370, 627, 319, 630, 921])
-                    sparkline3.draw([15, 19, 20, 22, 33, 27, 31, 27, 19, 30, 21])
+                        this.g.lineWidth = 2
+                        this.g.beginPath()
+                        this.g.strokeStyle = this.o.fgColor
+                        this.g.arc(this.xy, this.xy, this.radius - this.lineWidth + 1 + this.lineWidth * 2 / 3, 0, 2 * Math.PI, false)
+                        this.g.stroke()
 
-                })
+                        return false
+                    }
+                }
+            })
+            /* END JQUERY KNOB */
 
-            </script>
+            //INITIALIZE SPARKLINE CHARTS
+            var sparkline1 = new Sparkline($('#sparkline-1')[0], {
+                width: 240,
+                height: 70,
+                lineColor: '#92c1dc',
+                endColor: '#92c1dc'
+            })
+            var sparkline2 = new Sparkline($('#sparkline-2')[0], {
+                width: 240,
+                height: 70,
+                lineColor: '#f56954',
+                endColor: '#f56954'
+            })
+            var sparkline3 = new Sparkline($('#sparkline-3')[0], {
+                width: 240,
+                height: 70,
+                lineColor: '#3af221',
+                endColor: '#3af221'
+            })
+
+            sparkline1.draw([1000, 1200, 920, 927, 931, 1027, 819, 930, 1021])
+            sparkline2.draw([515, 519, 520, 522, 652, 810, 370, 627, 319, 630, 921])
+            sparkline3.draw([15, 19, 20, 22, 33, 27, 31, 27, 19, 30, 21])
+
+        })
+
+    </script>
 @endsection

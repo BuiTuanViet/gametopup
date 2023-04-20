@@ -19,7 +19,7 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        $users = User::with('sale');
+        $users = User::with('sale')->orderBy('id', 'DESC');
         if ($request->user_name){
             $users = $users->where('user_name', $request->user_name);
         }
