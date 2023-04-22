@@ -6,7 +6,7 @@
             <h3 class="card-title">Danh sách chờ duyệt</h3>
         </div>
         <div class="card-header">
-            <form action="{{ route('transaction_topup') }}" method="get">
+            <form action="{{ route('transaction_pending') }}" method="get">
                 <div class="row">
                     <div class="form-group col-md-4">
                         <label for="user_name">Tên đăng nhập</label>
@@ -130,7 +130,7 @@
                 @endforeach
                 </tbody>
             </table>
-            {{ $transactions->links() }}
+            {{ $transactions->appends(request()->query())->links() }}
         </div>
     </div>
 @endsection

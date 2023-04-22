@@ -46,6 +46,6 @@
                 </tbody>
             </table>
         </div>
-        {{ $bankAdmins->links() }}
+        {{ $bankAdmins->appends(request()->query())->links() }}
     </div>
 @endsection

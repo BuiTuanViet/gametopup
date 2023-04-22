@@ -42,14 +42,14 @@
                         <td>{{ date('d-m-Y', strtotime($item->time_end)) }}</td>
 
                         <td style="width: 150px">
-                        
+
                             <a onclick="deleteItem(this);" url="{{ route('promotion.destroy', ['promotion' => $item->id]) }}" title="Xóa"><button class="btn btn-danger"><i class="fa fa-trash-alt"></i></button></a>
                         </td>
                     </tr>
                 @endforeach
                 </tbody>
             </table>
-            {{ $promotions->links() }}
+            {{ $promotions->appends(request()->query())->links() }}
         </div>
     </div>
 @endsection

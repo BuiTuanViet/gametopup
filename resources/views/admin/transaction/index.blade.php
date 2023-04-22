@@ -133,7 +133,7 @@
                 @endforeach
                 </tbody>
             </table>
-            {{ $transactions->links() }}
+            {{ $transactions->appends(request()->query())->links() }}
         </div>
     </div>
 @endsection

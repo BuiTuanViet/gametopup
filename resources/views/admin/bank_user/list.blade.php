@@ -68,6 +68,6 @@
                 </tbody>
             </table>
         </div>
-        {{ $bankUsers->links() }}
+        {{ $bankUsers->appends(request()->query())->links() }}
     </div>
 @endsection

@@ -236,7 +236,7 @@
                                             </div>
                                         </div>
                                         @endforeach
-                                        {{ $promotions->links() }}
+                                        {{ $promotions->appends(request()->query())->links() }}
                                     </div>
                                 </div>
                             </div>

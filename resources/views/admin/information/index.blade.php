@@ -43,7 +43,7 @@
                 @endforeach
                 </tbody>
             </table>
-            {{ $informations->links() }}
+            {{ $informations->appends(request()->query())->links() }}
         </div>
     </div>
 @endsection
