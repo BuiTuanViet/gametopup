@@ -2,10 +2,12 @@
 
 @section('content')
     <style>
-        .card-item{
+        .card-item {
             height: 200px;
-            background: #9060d599;
+            background: #3a0a0278;
             color: #fff;
+            box-shadow: #f1a6a669 0px 5px 15px;
+            /*box-shadow: rgb(237 229 229 / 35%) 0px 5px 15px;*/
         }
         .card-item i{
             font-size: 80px;
@@ -26,7 +28,7 @@
                 <div class="row">
                     <div class="col-md-4">
                         <a href="{!! isset($information['link-choi-game']) ? $information['link-choi-game'] : '' !!}">
-                            <div class="card card-item" style="background: url('assset/img/img.jpg') no-repeat center">
+                            <div class="card card-item" style="background: url('assset/img/img.jpg') no-repeat center; background-size: cover">
                                 <div class="card-body">
                                     <i class="fa fa-play-circle"></i>
                                     <h4>Vào chơi</h4>

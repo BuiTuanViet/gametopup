@@ -33,6 +33,16 @@
             color: #f87474 !important;
             opacity: 1; /* Firefox */
         }
+        .main-panel{
+            background-color: #2a323a;
+            height: 100%;
+        }
+        .navbar{
+            background-color: #2a323a;
+        }
+        .sidebar::after{
+            background: linear-gradient(to bottom, #b10404 0%, #943bea 100%);
+        }
     </style>
 </head>
 

@@ -39,10 +39,12 @@ class RevenueController extends Controller
         $trans = $trans->where('status', 1);
         $totalTopupAll = $trans->where('type', 0)->count();
         $sumTopupAll = $trans->where('type', 0)->sum('amount');
+
+        $trans = new Transaction();
+        $trans = $trans->where('status', 1);
         $totalWithdrawAll = $trans->where('type', 1)->count();
         $sumWithdrawAll = $trans->where('type', 1)->sum('amount');
         $revenueAll = $sumTopupAll - $sumWithdrawAll ;
-//        $trans = $trans->get();
 
         foreach ($users as $item){
             $transactions = Transaction::where('sale_id', $item->id)->where('status', 1);
