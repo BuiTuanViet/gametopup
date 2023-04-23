@@ -41,6 +41,13 @@ class RevenueController extends Controller
         $sumTopupAll = $trans->where('type', 0)->sum('amount');
 
         $trans = new Transaction();
+        if ($request->time_range){
+            $timeArr = explode('-', $request->time_range);
+            $timeStart = date('Y-m-d 00:00:00', strtotime(trim($timeArr[0])));
+            $timeEnd =  date('Y-m-d 23:59:59', strtotime(trim($timeArr[1])));
+            $trans = $trans->where('request_time', '>=', $timeStart)
+                ->where('request_time', '<=', $timeEnd);
+        }
         $trans = $trans->where('status', 1);
         $totalWithdrawAll = $trans->where('type', 1)->count();
         $sumWithdrawAll = $trans->where('type', 1)->sum('amount');
