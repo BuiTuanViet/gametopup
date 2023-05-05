@@ -33,7 +33,8 @@ class TransactionController extends Controller
         if (isset($request->type)){
             $transactions = $transactions->where('type', $request->type);
         }
-        $transactions = $transactions->orderBy('request_time', 'DESC')->paginate(10);
+        $transactions = $transactions->orderBy('request_time', 'DESC')
+            ->paginate(10);
 
         return view('admin.transaction.index')->with([
             'transactions' => $transactions
@@ -63,7 +64,8 @@ class TransactionController extends Controller
         $totalTrans = $transactions->count();
         $sumTransAmount = $transactions->sum('amount');
 
-        $transactions = $transactions->paginate(10);
+        $transactions = $transactions->orderBy('request_time', 'DESC')
+            ->paginate(10);
 
         return view('admin.transaction.topup')->with([
             'transactions' => $transactions,
@@ -93,7 +95,8 @@ class TransactionController extends Controller
         $totalTrans = $transactions->count();
         $sumTransAmount = $transactions->sum('amount');
 
-        $transactions = $transactions->paginate(10);
+        $transactions = $transactions->orderBy('request_time', 'DESC')
+            ->paginate(10);
 
         return view('admin.transaction.withdraw')->with([
             'transactions' => $transactions,
@@ -123,7 +126,8 @@ class TransactionController extends Controller
         $totalTrans = $transactions->count();
         $sumTransAmount = $transactions->sum('amount');
 
-        $transactions = $transactions->paginate(10);
+        $transactions = $transactions->orderBy('request_time', 'DESC')
+            ->paginate(10);
 
         return view('admin.transaction.pending')->with([
             'transactions' => $transactions,

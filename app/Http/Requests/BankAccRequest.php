@@ -24,10 +24,10 @@ class BankAccRequest extends FormRequest
     public function rules()
     {
         return [
-            'acc_name' => [
-                'required',
-                'regex:/^[A-Za-z ]+$/'
-            ],
+//            'acc_name' => [
+//                'required',
+//                'regex:/^[A-Za-z ]+$/'
+//            ],
             'acc_no' => 'required|numeric',
             'bank_no' => 'required',
         ];

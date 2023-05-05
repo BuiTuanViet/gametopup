@@ -44,7 +44,7 @@
             </div>
         @endif
         <div class="card-body" style="overflow-x: scroll">
-            <table class="table table-bordered" style="width: 1200px">
+            <table class="table table-bordered" style="width: 1500px">
                 <thead>
                 <tr>
                     <th style="width: 10px">ID</th>
@@ -56,6 +56,7 @@
                     <th>Mức quy đổi</th>
                     <th>Trạng thái</th>
                     <th>Phân loại</th>
+                    <th>Thời gian tạo</th>
 
                     <th style="width: 150px">Thao tác</th>
                 </tr>
@@ -113,7 +114,9 @@
                             @break
                         @endswitch
                     </td>
-
+                    <td>
+                        {{ date('d-m-Y', strtotime($user->created_at)) }}
+                    </td>
                     <td style="width: 150px">
                         <a href="{{ route('user.edit', ['user' => $user->id]) }}" title="Chỉnh sửa">
                             <button class="btn btn-primary">
