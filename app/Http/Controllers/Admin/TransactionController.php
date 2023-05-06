@@ -16,9 +16,10 @@ class TransactionController extends Controller
      */
     public function index(Request $request)
     {
+        $user = User::where('user_name', $request->user_name)->first();
         $transactions = Transaction::with('user');
         if ($request->user_name){
-            $transactions = $transactions->where('user_name', $request->user_name);
+            $transactions = $transactions->where('user_id', $user->id);
         }
         if ($request->time_range){
             $timeArr = explode('-', $request->time_range);
@@ -44,9 +45,10 @@ class TransactionController extends Controller
     public function topup(Request $request)
     {
         $transactions = Transaction::with('user')->where('type', 0)->where('status', "!=", 2);
+        $user = User::where('user_name', $request->user_name)->first();
 
         if ($request->user_name){
-            $transactions = $transactions->where('user_name', $request->user_name);
+            $transactions = $transactions->where('user_id', $user->id);
         }
         if ($request->time_range){
             $timeArr = explode('-', $request->time_range);
@@ -77,9 +79,10 @@ class TransactionController extends Controller
     public function withdraw(Request $request)
     {
         $transactions = Transaction::with('user')->where('type', 1)->where('status', "!=", 2);
+        $user = User::where('user_name', $request->user_name)->first();
 
         if ($request->user_name){
-            $transactions = $transactions->where('user_name', $request->user_name);
+            $transactions = $transactions->where('user_id', $user->id);
         }
         if ($request->time_range){
             $timeArr = explode('-', $request->time_range);
@@ -108,9 +111,10 @@ class TransactionController extends Controller
     public function pending(Request $request)
     {
         $transactions = Transaction::with('user')->where('status', 0);
+        $user = User::where('user_name', $request->user_name)->first();
 
         if ($request->user_name){
-            $transactions = $transactions->where('user_name', $request->user_name);
+            $transactions = $transactions->where('user_id', $user->id);
         }
         if ($request->time_range){
             $timeArr = explode('-', $request->time_range);
