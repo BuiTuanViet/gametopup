@@ -118,7 +118,7 @@
                                         <i class="fa fa-angle-up"></i>
                                     </button>
                                 </a>
-                                <a href="{{ route('transaction_cancel', ['trans_id' => $item->trans_id]) }}" title="Hủy ">
+                                <a onclick="return showPopupCancel(this)" trans_id="{{ $item->trans_id }}" title="Hủy ">
                                     <button class="btn btn-warning">
                                         <i class="fa fa-ban"></i>
                                     </button>
@@ -133,9 +133,42 @@
             {{ $transactions->appends(request()->query())->links() }}
         </div>
     </div>
+    <!-- Modal -->
+    <div class="modal fade" id="modalCancel" tabindex="-1" role="dialog" aria-labelledby="modalCancel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Nhập lý do hủy</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form method="POST" action="{{ route('cancel_modal') }}">
+                <div class="modal-body">
+                        @csrf
+                        <input type="hidden" id="trans_id" name="trans_id">
+                        <label for="">Nhập lý do hủy</label>
+                        <div class="form-group">
+                            <textarea name="note" id="" class="form-control" cols="30" rows="10" placeholder="Nhập lý do hủy"></textarea>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Lưu</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
 @endsection
 @section('js')
     <script>
-        $('#reservation').daterangepicker()
+        $('#reservation').daterangepicker();
+        function showPopupCancel(e) {
+            var transId = e.getAttribute('trans_id');
+
+            $('#modalCancel').modal('show');
+            $('#trans_id').val(transId);
+        }
     </script>
 @endsection

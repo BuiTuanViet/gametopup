@@ -205,7 +205,7 @@ class TransactionController extends Controller
     {
         $trans = Transaction::where('trans_id', $id)->first();
         $trans->destroy($id);
-        return redirect(route('transaction.index'))->with(['success', "Cập nhật thành công"]);
+        return redirect()->back()->with(['success', "Cập nhật thành công"]);
 
     }
 
@@ -216,7 +216,7 @@ class TransactionController extends Controller
         $trans->update_end_status_at = new \DateTime();
         $trans->save();
 
-        return redirect(route('transaction.index'))->with(['success', "Cập nhật thành công"]);
+        return redirect()->back()->with(['success', "Cập nhật thành công"]);
     }
 
     public function cancel($id)
@@ -227,5 +227,17 @@ class TransactionController extends Controller
         $trans->save();
 
         return redirect(route('transaction.index'))->with(['success', "Cập nhật thành công"]);
+    }
+
+    public function cancelModal(Request $request){
+        $id = $request->trans_id;
+        $note = isset($request->note) ? $request->note : '';
+        $trans = Transaction::where('trans_id', $id)->first();
+        $trans->status = 2;
+        $trans->note = $note;
+        $trans->update_end_status_at = new \DateTime();
+        $trans->save();
+
+        return redirect()->back()->with(['success', "Cập nhật thành công"]);
     }
 }

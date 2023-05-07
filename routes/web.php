@@ -18,6 +18,7 @@ Route::group(['namespace' => 'Admin', 'middleware' => 'admin', 'prefix' => 'admi
     Route::resource('user', 'UserController');
     Route::get('transaction-accept/{trans_id}', 'TransactionController@accept')->name('transaction_accept');
     Route::get('transaction-cancel/{trans_id}', 'TransactionController@cancel')->name('transaction_cancel');
+    Route::post('cancel_modal', 'TransactionController@cancelModal')->name('cancel_modal');
     Route::resource('information', 'InformationController');
     Route::get('transaction/topup', 'TransactionController@topup')->name('transaction_topup');
     Route::get('transaction/withdraw', 'TransactionController@withdraw')->name('transaction_withdraw');

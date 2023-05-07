@@ -26,8 +26,8 @@ class UserController extends Controller
         if (isset($request->status)){
             $users = $users->where('status', $request->status);
         }
-        if (isset($request->type)){
-            $users = $users->where('type', $request->type);
+        if (isset($request->role)){
+            $users = $users->where('role', $request->role);
         }
 
         $users = $users->paginate(10);

@@ -24,6 +24,7 @@
                                     <th>Trạng thái</th>
                                     <th>Thời gian yêu cầu</th>
                                     <th>Thời gian duyệt</th>
+                                    <th>Note</th>
                                     </thead>
                                     <tbody>
                                     @foreach($transactions as $id => $item)
@@ -55,6 +56,9 @@
                                                 @break;
                                             @endswitch
                                         </td>
+                                        <td>
+                                            {{ $item->note }}
+                                        </td>
                                         <td>{{ isset($item->request_time) ? date('d-m-Y H:i', strtotime($item->request_time)) : ''  }}</td>
                                         <td>{{ isset($item->update_end_status_at) ? date('d-m-Y H:i', strtotime($item->update_end_status_at)) : ''  }}</td>
                                     </tr>
@@ -63,7 +67,6 @@
                                 </table>
                             </div>
                             {{ $transactions->appends(request()->query())->links() }}
-
                         </div>
                     </div>
                 </div>

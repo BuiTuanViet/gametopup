@@ -111,6 +111,31 @@
                             @break
                             @case(2)
                             Sale
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#LinkAff{{$user->id}}">
+                                <i class="fas fa-link"></i>
+                            </button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="LinkAff{{$user->id}}" tabindex="-1" role="dialog" aria-labelledby="#LinkAff{{$user->id}}" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">
+                                                Link affiliate
+                                            </h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body row">
+                                            <input class="form-control col-md-11" type="text" disabled
+                                                   value="{{ route('register', ['sale' => $user->user_name]) }}">
+                                            <button onclick="return copyText(this)" class="copy_aff btn btn-primary col-md-1"><i class="fas fa-copy"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             @break
                         @endswitch
                     </td>
@@ -145,4 +170,20 @@
         </div>
         {{ $users->appends(request()->query())->links() }}
     </div>
+@endsection
+@section('js')
+    <script>
+        function copyText(button) {
+            const input = $(button).prev('input');
+            navigator.clipboard.writeText(input.val())
+                .then(() => {
+                    alert('Text copied to clipboard');
+                    console.log('Text copied to clipboard');
+                })
+                .catch((err) => {
+                    alert('Failed to copy text');
+                    console.error('Failed to copy text: ', err);
+                });
+        };
+    </script>
 @endsection

@@ -45,6 +45,7 @@
                         <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Đăng ký </h3>
                         <form method="post" id="form-register" action="{{ route('post_register') }}">
                             @csrf
+                            <input type="hidden" name="sale" value="{{ request('sale') }}">
                             <div class="row">
                                 <div class="col-md-12 mb-4">
                                     <div class="form-outline">

@@ -77,6 +77,11 @@ class AuthController extends Controller
             'rate' => $request->rate,
             'created_at' => new \DateTime(),
         ];
+        if(isset($request->sale)){
+            $sale = User::where('user_name', $request->sale)->first();
+            $data['sale_id'] = $sale->id;
+            $data['group_id'] = $sale->group_id;
+        }
 
         $id = $userModel->insertGetId($data);
 

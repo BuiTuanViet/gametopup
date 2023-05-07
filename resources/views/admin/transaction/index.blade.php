@@ -62,6 +62,7 @@
                 <th>Mã khuyến mãi</th>
                 <th>Loại giao dịch</th>
                 <th>Trạng thái</th>
+                <th>Note</th>
                 <th>Thời gian yêu cầu</th>
                 <th>Thời gian duyệt</th>
                 <th width="150px">Thao tác</th>
@@ -110,6 +111,9 @@
                                 <span class="badge badge-danger">Đã hủy</span>
                                 @break;
                             @endswitch
+                        </td>
+                        <td>
+                            {{ $item->note }}
                         </td>
                         <td>{{ isset($item->request_time) ? date('d-m-Y H:i', strtotime($item->request_time)) : ''  }}</td>
                         <td>{{ isset($item->update_end_status_at) ? date('d-m-Y H:i', strtotime($item->update_end_status_at)) : ''  }}</td>
