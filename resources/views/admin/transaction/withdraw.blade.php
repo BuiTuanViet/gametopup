@@ -68,10 +68,11 @@
                 @foreach($transactions as $id => $item)
                     <tr>
                         <td>{{ $id + 1 }}</td>
-                        <td>{{ $item->user->user_name }}</td>
+                        <td>{{ isset($item->user->user_name) ? $item->user->user_name : '' }}</td>
                         <td>{{ number_format($item->amount) }}</td>
                         <td>{{ $item->memo }}</td>
                         <td>
+                            @if(isset($item->user->rate))
                             @switch($item->user->rate)
                                 @case(1)
                                 1đ = 25.000đ
@@ -83,6 +84,7 @@
                                 1đ = 100.000đ
                                 @break
                             @endswitch
+                            @endif
                         </td>
                         <td>{{ $item->promotion_code }}</td>
                         <td>
