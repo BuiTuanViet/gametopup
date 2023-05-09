@@ -101,6 +101,16 @@
                 <?php
                 $id = 0;
                 ?>
+                <tr>
+                    <td>{{ $id }}</td>
+                    <td>{{ isset( $dataNoSale['name']) ?  $dataNoSale['name'] : '' }}</td>
+                    <td>{{ isset( $dataNoSale['group']) ?  $dataNoSale['group'] : '' }}</td>
+                    <td>{{ isset($dataNoSale['total_topup']) ?  number_format($dataNoSale['total_topup']) : '' }}</td>
+                    <td>{{ isset($dataNoSale['sum_topup']) ?   number_format($dataNoSale['sum_topup']) : '' }}</td>
+                    <td>{{ isset($dataNoSale['total_withdraw']) ?   number_format($dataNoSale['total_withdraw']) : '' }}</td>
+                    <td>{{ isset($dataNoSale['sum_withdraw']) ?   number_format($dataNoSale['sum_withdraw']) : '' }}</td>
+                    <td>{{ isset($dataNoSale['revenue']) ?   number_format($dataNoSale['revenue']) : '' }}</td>
+                </tr>
                 @foreach($revenues as $index => $item)
                 <tr>
                     <td>{{ $id += 1 }}</td>
@@ -113,6 +123,7 @@
                     <td>{{ number_format($item->revenue) }}</td>
                 </tr>
                 @endforeach
+
                 </tbody>
             </table>
         </div>

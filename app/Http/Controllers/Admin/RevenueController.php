@@ -90,6 +90,39 @@ class RevenueController extends Controller
         }
         $data = json_decode(json_encode($data));
 
+        $transactionsNoSale = Transaction::where('sale_id', null)->where('status', 1);
+        if ($request->time_range){
+            $timeArr = explode('-', $request->time_range);
+            $timeStart = date('Y-m-d 00:00:00', strtotime(trim($timeArr[0])));
+            $timeEnd =  date('Y-m-d 23:59:59', strtotime(trim($timeArr[0])));
+            $transactionsNoSale = $transactions->where('request_time', '>=', $timeStart)
+                ->where('request_time', '<=', $timeEnd);
+        }
+        $transactionsNoSale = $transactionsNoSale->get();
+
+        $totalTopupNoSale = 0;
+        $sumTopupNoSale = 0;
+        $totalWithdrawNoSale = 0;
+        $sumWithdrawNoSale = 0;
+        foreach ($transactionsNoSale as $tran){
+            if ($tran->type == 0){
+                $totalTopupNoSale += 1;
+                $sumTopupNoSale += $tran->amount;
+            } elseif ($tran->type == 1){
+                $totalWithdrawNoSale += 1;
+                $sumWithdrawNoSale += $tran->amount;
+            }
+        }
+        $dataNoSale = [];
+        $dataNoSale['user_name'] = 'Không có sale';
+        $dataNoSale['group'] = "Không Phân nhóm";
+        $dataNoSale['name'] = 'Không có sale';
+        $dataNoSale['total_topup'] = $totalTopupNoSale;
+        $dataNoSale['sum_topup'] = $sumTopupNoSale;
+        $dataNoSale['total_withdraw'] = $totalWithdrawNoSale;
+        $dataNoSale['sum_withdraw'] = $sumWithdrawNoSale;
+        $dataNoSale['revenue'] = $sumTopupNoSale - $sumWithdrawNoSale;
+
         return view('admin.revenue.list')->with([
             'revenues' => $data,
             'groups' => $groups,
@@ -99,6 +132,7 @@ class RevenueController extends Controller
             'totalWithdrawAll' => $totalWithdrawAll,
             'sumWithdrawAll' => $sumWithdrawAll,
             'revenueAll' => $revenueAll,
+            'dataNoSale' => $dataNoSale,
         ]);
     }
 }
