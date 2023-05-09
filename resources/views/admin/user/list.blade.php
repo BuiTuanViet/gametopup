@@ -140,7 +140,7 @@
                         @endswitch
                     </td>
                     <td>
-                        {{ date('d-m-Y', strtotime($user->created_at)) }}
+                        {{ date('d-m-Y H:i:s', strtotime($user->created_at)) }}
                     </td>
                     <td style="width: 150px">
                         <a href="{{ route('user.edit', ['user' => $user->id]) }}" title="Chỉnh sửa">
