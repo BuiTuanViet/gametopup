@@ -154,7 +154,7 @@
                 <form method="POST" action="{{ route('cancel_modal') }}">
                     <div class="modal-body">
                         @csrf
-                        <input type="hidden" id="trans_id" name="trans_id">
+                        <input type="hidden" id="trans_id_modal" name="trans_id">
                         <label for="">Nhập lý do hủy</label>
                         <div class="form-group">
                             <textarea name="note" id="" class="form-control" cols="30" rows="10" placeholder="Nhập lý do hủy"></textarea>
@@ -171,12 +171,11 @@
 @endsection
 @section('js')
     <script>
-        $('#reservation').daterangepicker();
         function showPopupCancel(e) {
             var transId = e.getAttribute('trans_id');
 
             $('#modalCancel').modal('show');
-            $('#trans_id').val(transId);
+            $('#trans_id_modal').val(transId);
         }
     </script>
     <script>

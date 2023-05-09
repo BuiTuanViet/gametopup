@@ -230,10 +230,9 @@ class TransactionController extends Controller
 
     public function cancelModal(Request $request){
         $id = $request->trans_id;
-        $note = isset($request->note) ? $request->note : '';
         $trans = Transaction::where('trans_id', $id)->first();
         $trans->status = 2;
-        $trans->note = $note;
+        $trans->note = isset($request->note) ? $request->note : null;
         $trans->update_end_status_at = new \DateTime();
         $trans->save();
 
