@@ -55,11 +55,10 @@ class RevenueController extends Controller
 
         foreach ($users as $item){
             $transactions = Transaction::where('sale_id', $item->id)->where('status', 1);
-
             if ($request->time_range){
                 $timeArr = explode('-', $request->time_range);
                 $timeStart = date('Y-m-d 00:00:00', strtotime(trim($timeArr[0])));
-                $timeEnd =  date('Y-m-d 23:59:59', strtotime(trim($timeArr[0])));
+                $timeEnd =  date('Y-m-d 23:59:59', strtotime(trim($timeArr[1])));
                 $transactions = $transactions->where('request_time', '>=', $timeStart)
                     ->where('request_time', '<=', $timeEnd);
             }
@@ -94,8 +93,8 @@ class RevenueController extends Controller
         if ($request->time_range){
             $timeArr = explode('-', $request->time_range);
             $timeStart = date('Y-m-d 00:00:00', strtotime(trim($timeArr[0])));
-            $timeEnd =  date('Y-m-d 23:59:59', strtotime(trim($timeArr[0])));
-            $transactionsNoSale = $transactions->where('request_time', '>=', $timeStart)
+            $timeEnd =  date('Y-m-d 23:59:59', strtotime(trim($timeArr[1])));
+            $transactionsNoSale = $transactionsNoSale->where('request_time', '>=', $timeStart)
                 ->where('request_time', '<=', $timeEnd);
         }
         $transactionsNoSale = $transactionsNoSale->get();
