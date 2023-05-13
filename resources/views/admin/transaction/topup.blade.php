@@ -54,6 +54,7 @@
                 <thead>
                 <th>STT</th>
                 <th>Tên đăng nhập</th>
+                <th>Ngân hàng</th>
                 <th>Số tiền</th>
                 <th>Nội dung chuyển tiền</th>
                 <th>Mức quy đổi</th>
@@ -69,6 +70,7 @@
                     <tr>
                         <td>{{ $id + 1 }}</td>
                         <td>{{ isset($item->user->user_name) ? $item->user->user_name : '' }}</td>
+                        <td>{{ isset($item->bank->bank_short_name) ? $item->bank->bank_short_name : '' }}</td>
                         <td>{{ number_format($item->amount) }}</td>
                         <td>{{ $item->memo }}</td>
                         <td>
