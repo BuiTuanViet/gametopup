@@ -26,7 +26,7 @@ class UserRequest extends FormRequest
         return [
             'user_name' => [
                 'required',
-                'regex:/^[a-z0-9\s]{8,15}$/',
+                'regex:/^[a-z0-9]{8,15}$/',
                 'unique:users'
             ],
             'password' => [
