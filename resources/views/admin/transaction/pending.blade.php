@@ -20,7 +20,7 @@
                                 <i class="far fa-calendar-alt"></i>
                                 </span>
                             </div>
-                            <input type="text" class="form-control float-right" name="time_range" id="reservation">
+                            <input type="text" class="form-control float-right" name="time_range" id="reservation" value="{{ request('time_range') }}>
                         </div>
 
                     </div>

@@ -52,7 +52,7 @@ class TransactionController extends Controller
         if ($request->time_range){
             $timeArr = explode('-', $request->time_range);
             $timeStart = date('Y-m-d 00:00:00', strtotime(trim($timeArr[0])));
-            $timeEnd =  date('Y-m-d 23:59:59', strtotime(trim($timeArr[0])));
+            $timeEnd =  date('Y-m-d 23:59:59', strtotime(trim($timeArr[1])));
             $transactions = $transactions->where('request_time', '>=', $timeStart)
                 ->where('request_time', '<=', $timeEnd);
         }
@@ -77,7 +77,8 @@ class TransactionController extends Controller
 
     public function withdraw(Request $request)
     {
-        $transactions = Transaction::with('user')->where('type', 1)->where('status', "!=", 2);
+        $transactions = Transaction::with('user')->where('type', 1)
+            ->where('status', "!=", 2);
 
         if ($request->user_name){
             $user = User::where('user_name', $request->user_name)->first();
@@ -86,7 +87,7 @@ class TransactionController extends Controller
         if ($request->time_range){
             $timeArr = explode('-', $request->time_range);
             $timeStart = date('Y-m-d 00:00:00', strtotime(trim($timeArr[0])));
-            $timeEnd =  date('Y-m-d 23:59:59', strtotime(trim($timeArr[0])));
+            $timeEnd =  date('Y-m-d 23:59:59', strtotime(trim($timeArr[1])));
             $transactions = $transactions->where('request_time', '>=', $timeStart)
                 ->where('request_time', '<=', $timeEnd);
         }
@@ -118,7 +119,7 @@ class TransactionController extends Controller
         if ($request->time_range){
             $timeArr = explode('-', $request->time_range);
             $timeStart = date('Y-m-d 00:00:00', strtotime(trim($timeArr[0])));
-            $timeEnd =  date('Y-m-d 23:59:59', strtotime(trim($timeArr[0])));
+            $timeEnd =  date('Y-m-d 23:59:59', strtotime(trim($timeArr[1])));
             $transactions = $transactions->where('request_time', '>=', $timeStart)
                 ->where('request_time', '<=', $timeEnd);
         }
