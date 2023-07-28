@@ -74,6 +74,12 @@
             </div>
         </div>
     </div>
+    <script>
+         $( "#userName" ).on( "change", function() {
+            $change = $("#userName").val().toLocaleLowerCase();
+            $("#userName").val($change);
+        } );
+    </script>
 </section>
 @include('site.master.livechat')
 

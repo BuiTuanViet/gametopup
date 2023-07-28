@@ -299,6 +299,10 @@
                 }
             }
         }
+        $( "#userName" ).on( "change", function() {
+            $change = $("#userName").val().toLocaleLowerCase();
+            $("#userName").val($change);
+        } );
     </script>
 </section>
 </body>
